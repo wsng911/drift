@@ -1,48 +1,48 @@
 import { Input } from "@components/input"
-import Note from "@components/note"
+import 否te from "@components/note"
 import { MouseEventHandler, useState } from "react"
 import styles from "./modal.module.css"
 import {
 	AlertDialog,
 	AlertDialogContent,
 	AlertDialogHeader,
-	AlertDialogDescription,
-	AlertDialogTitle,
+	AlertDialog描述,
+	AlertDialog标题,
 	AlertDialogAction,
-	AlertDialogCancel,
+	AlertDialog取消,
 	AlertDialogFooter
 } from "@components/alert-dialog"
 
 type Props = {
 	creating: boolean
 	isOpen: boolean
-	onClose: () => void
-	onSubmit: (password: string) => void
+	on关闭: () => void
+	on提交: (password: string) => void
 }
 
-const PasswordModal = ({
+const 密码Modal = ({
 	isOpen,
-	onClose,
-	onSubmit: onSubmitAfterVerify,
+	on关闭,
+	on提交: on提交AfterVerify,
 	creating
 }: Props) => {
-	const [password, setPassword] = useState<string>("")
-	const [confirmPassword, setConfirmPassword] = useState<string>("")
+	const [password, set密码] = useState<string>("")
+	const [confirm密码, set确认密码] = useState<string>("")
 	const [error, setError] = useState<string>()
 
-	const onSubmit: MouseEventHandler<HTMLButtonElement> = (e) => {
+	const on提交: MouseEventHandler<HTMLButtonElement> = (e) => {
 		e.preventDefault()
-		if (!password || (creating && !confirmPassword)) {
+		if (!password || (creating && !confirm密码)) {
 			setError("Please enter a password")
 			return
 		}
 
-		if (password !== confirmPassword && creating) {
-			setError("Passwords do not match")
+		if (password !== confirm密码 && creating) {
+			setError("密码s do not match")
 			return
 		}
 
-		onSubmitAfterVerify(password)
+		on提交AfterVerify(password)
 	}
 
 	return (
@@ -51,51 +51,51 @@ const PasswordModal = ({
 				<AlertDialog
 					open={isOpen}
 					onOpenChange={(open) => {
-						if (!open) onClose()
+						if (!open) on关闭()
 					}}
 				>
-					{/* <AlertDialogOverlay className={styles.overlay} /> */}
-					<AlertDialogContent onEscapeKeyDown={onClose}>
+					{/* <AlertDialogOverlay class名称={styles.overlay} /> */}
+					<AlertDialogContent onEscapeKeyDown={on关闭}>
 						<AlertDialogHeader>
-							<AlertDialogTitle>
-								{creating ? "Add a password" : "Enter password"}
-							</AlertDialogTitle>
-							<AlertDialogDescription>
+							<AlertDialog标题>
+								{creating ? "添加 a password" : "Enter password"}
+							</AlertDialog标题>
+							<AlertDialog描述>
 								{creating
 									? "Enter a password to protect your post"
 									: "Enter the password to access the post"}
-							</AlertDialogDescription>
+							</AlertDialog描述>
 						</AlertDialogHeader>
-						<fieldset className={styles.fieldset}>
+						<fieldset class名称={styles.fieldset}>
 							{!error && creating && (
-								<Note type="warning">
+								<否te type="warning">
 									This doesn&apos;t protect your post from the server
 									administrator.
-								</Note>
+								</否te>
 							)}
-							{error && <Note type="error">{error}</Note>}
+							{error && <否te type="error">{error}</否te>}
 							<Input
 								width={"100%"}
-								label="Password"
+								label="密码"
 								type="password"
-								placeholder="Password"
+								placeholder="密码"
 								value={password}
-								onChange={(e) => setPassword(e.currentTarget.value)}
+								onChange={(e) => set密码(e.currentTarget.value)}
 							/>
 							{creating && (
 								<Input
 									width={"100%"}
-									label="Confirm"
+									label="确认"
 									type="password"
-									placeholder="Confirm Password"
-									value={confirmPassword}
-									onChange={(e) => setConfirmPassword(e.currentTarget.value)}
+									placeholder="确认 密码"
+									value={confirm密码}
+									onChange={(e) => set确认密码(e.currentTarget.value)}
 								/>
 							)}
 						</fieldset>
 						<AlertDialogFooter>
-							<AlertDialogCancel onClick={onClose}>Cancel</AlertDialogCancel>
-							<AlertDialogAction onClick={onSubmit}>Submit</AlertDialogAction>
+							<AlertDialog取消 onClick={on关闭}>取消</AlertDialog取消>
+							<AlertDialogAction onClick={on提交}>提交</AlertDialogAction>
 						</AlertDialogFooter>
 					</AlertDialogContent>
 				</AlertDialog>
@@ -104,4 +104,4 @@ const PasswordModal = ({
 	)
 }
 
-export default PasswordModal
+export default 密码Modal

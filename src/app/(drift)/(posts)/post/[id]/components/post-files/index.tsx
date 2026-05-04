@@ -4,31 +4,31 @@ import DocumentComponent from "./view-document"
 
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import PasswordModalWrapper from "./password-modal-wrapper"
-import { PostWithFilesAndAuthor } from "@lib/server/prisma"
+import 密码ModalWrapper from "./password-modal-wrapper"
+import { PostWith文件AndAuthor } from "@lib/server/prisma"
 
 type Props = {
-	post: PostWithFilesAndAuthor
+	post: PostWith文件AndAuthor
 	isProtected?: boolean
 	isAuthor?: boolean
 }
 
-const PostFiles = ({ post: initialPost }: Props) => {
-	const [post, setPost] = useState<PostWithFilesAndAuthor>(initialPost)
+const Post文件 = ({ post: initialPost }: Props) => {
+	const [post, setPost] = useState<PostWith文件AndAuthor>(initialPost)
 	const router = useRouter()
 
 	if (post?.expiresAt) {
-		if (new Date(post.expiresAt) < new Date()) {
+		if (new 日期(post.expiresAt) < new 日期()) {
 			router.push("/expired")
 		}
 	}
 
 	useEffect(() => {
-		let interval: NodeJS.Timer | null = null
+		let interval: 否deJS.Timer | null = null
 		if (post?.expiresAt) {
 			interval = setInterval(() => {
-				const expirationDate = new Date(post.expiresAt ? post.expiresAt : "")
-				if (expirationDate < new Date()) {
+				const expiration日期 = new 日期(post.expiresAt ? post.expiresAt : "")
+				if (expiration日期 < new 日期()) {
 					router.push("/expired")
 					if (interval) clearInterval(interval)
 				}
@@ -43,7 +43,7 @@ const PostFiles = ({ post: initialPost }: Props) => {
 	const hasFetched = post?.files !== undefined
 	if (isProtected && !hasFetched) {
 		return (
-			<PasswordModalWrapper
+			<密码ModalWrapper
 				authorId={post.authorId}
 				setPost={setPost}
 				postId={post.id}
@@ -72,4 +72,4 @@ const PostFiles = ({ post: initialPost }: Props) => {
 	)
 }
 
-export default PostFiles
+export default Post文件

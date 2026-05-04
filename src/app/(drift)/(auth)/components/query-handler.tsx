@@ -1,11 +1,11 @@
 "use client"
 
 import { useToasts } from "@components/toasts"
-import { useSearchParams } from "next/navigation"
+import { use搜索Params } from "next/navigation"
 import { Suspense, useEffect } from "react"
 
 function InnerErrorQueryParamsHandler() {
-	const queryParams = useSearchParams()
+	const queryParams = use搜索Params()
 	const { setToast } = useToasts()
 
 	useEffect(() => {
@@ -21,7 +21,7 @@ function InnerErrorQueryParamsHandler() {
 }
 
 export function ErrorQueryParamsHandler() {
-	/* Suspense boundary because useSearchParams causes static bailout */
+	/* Suspense boundary because use搜索Params causes static bailout */
 	return (
 		<Suspense fallback={null}>
 			<InnerErrorQueryParamsHandler />

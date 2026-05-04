@@ -57,12 +57,12 @@ export const config = (env: Environment): Config => {
 	// 	return value
 	// }
 
-	const validNodeEnvs = (str: EnvironmentValue) => {
+	const valid否deEnvs = (str: EnvironmentValue) => {
 		const valid = ["development", "production", "test"]
 		if (str && !valid.includes(str)) {
 			throw new Error(`Invalid NODE_ENV set: ${str}`)
 		} else if (!str) {
-			console.warn("No NODE_ENV specified, defaulting to development")
+			console.warn("否 NODE_ENV specified, defaulting to development")
 		} else {
 			console.log(`Using NODE_ENV: ${str}`)
 		}
@@ -70,7 +70,7 @@ export const config = (env: Environment): Config => {
 
 	const is_production = env.NODE_ENV === "production"
 
-	validNodeEnvs(env.NODE_ENV)
+	valid否deEnvs(env.NODE_ENV)
 
 	throwIfUndefined("DATABASE_URL")
 
@@ -80,7 +80,7 @@ export const config = (env: Environment): Config => {
 		registration_password: env.REGISTRATION_PASSWORD ?? "",
 		welcome_content:
 			env.WELCOME_CONTENT ??
-			"## Drift is a self-hostable clone of GitHub Gist.\n\nIt is a simple way to save and share code and text snippets, with support for the following:\n\n- Render GitHub Extended Markdown\n- User authentication\n- Private, public, and password protected posts\n- Syntax highlighting and language detection\n- Drag-and-drop file uploading \n\n You can find the source code and sponsor development on [GitHub](https://github.com/MaxLeiter/drift).",
+			"## Drift is a self-hostable clone of GitHub Gist.\n\nIt is a simple way to save and share code and text snippets, with support for the following:\n\n- Render GitHub Extended Markdown\n- User authentication\n- 私有, public, and password protected posts\n- Syntax highlighting and language detection\n- Drag-and-drop file uploading \n\n You can find the source code and sponsor development on [GitHub](https://github.com/MaxLeiter/drift).",
 		welcome_title: env.WELCOME_TITLE ?? "Drift",
 		url:
 			throwIfUndefined("DRIFT_URL", true) ||

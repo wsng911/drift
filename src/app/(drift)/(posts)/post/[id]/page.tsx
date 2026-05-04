@@ -1,11 +1,11 @@
 import VisibilityControl from "@components/badges/visibility-control"
 import { getMetadata } from "src/app/lib/metadata"
 import {
-	PostWithFilesAndAuthor,
+	PostWith文件AndAuthor,
 	serverPostToClientPost,
-	ServerPostWithFilesAndAuthor
+	ServerPostWith文件AndAuthor
 } from "@lib/server/prisma"
-import PostFiles from "./components/post-files"
+import Post文件 from "./components/post-files"
 import { getPost } from "./get-post"
 
 export default async function PostPage({
@@ -15,13 +15,13 @@ export default async function PostPage({
 		id: string
 	}
 }) {
-	const post = (await getPost(params.id)) as ServerPostWithFilesAndAuthor
-	const clientPost = serverPostToClientPost(post) as PostWithFilesAndAuthor
+	const post = (await getPost(params.id)) as ServerPostWith文件AndAuthor
+	const clientPost = serverPostToClientPost(post) as PostWith文件AndAuthor
 
 	return (
 		<>
-			<PostFiles post={clientPost} />
-			<div className="mx-auto mb-4 mt-4">
+			<Post文件 post={clientPost} />
+			<div class名称="mx-auto mb-4 mt-4">
 				<VisibilityControl
 					authorId={post.authorId}
 					postId={post.id}
@@ -39,7 +39,7 @@ export const generateMetadata = async ({
 		id: string
 	}
 }) => {
-	const post = (await getPost(params.id)) as ServerPostWithFilesAndAuthor
+	const post = (await getPost(params.id)) as ServerPostWith文件AndAuthor
 
 	return getMetadata({
 		title: post.title,
@@ -50,7 +50,7 @@ export const generateMetadata = async ({
 				title: post.title,
 				description: post.description || undefined,
 				type: "website",
-				siteName: "Drift"
+				site名称: "Drift"
 				// TODO: og images
 			}
 		}

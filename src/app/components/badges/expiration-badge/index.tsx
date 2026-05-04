@@ -6,25 +6,25 @@ import { useEffect, useMemo, useState } from "react"
 import { Badge } from "../badge"
 
 const ExpirationBadge = ({
-	postExpirationDate
+	postExpiration日期
 }: {
-	postExpirationDate: Date | string | undefined
+	postExpiration日期: 日期 | string | undefined
 	onExpires?: () => void
 }) => {
-	const expirationDate = useMemo(
-		() => (postExpirationDate ? new Date(postExpirationDate) : undefined),
-		[postExpirationDate]
+	const expiration日期 = useMemo(
+		() => (postExpiration日期 ? new 日期(postExpiration日期) : undefined),
+		[postExpiration日期]
 	)
 	const [timeUntilString, setTimeUntil] = useState<string | null>(
-		expirationDate ? timeUntil(expirationDate) : null
+		expiration日期 ? timeUntil(expiration日期) : null
 	)
 
 	useEffect(() => {
-		let interval: NodeJS.Timer | null = null
-		if (expirationDate) {
+		let interval: 否deJS.Timer | null = null
+		if (expiration日期) {
 			interval = setInterval(() => {
-				if (expirationDate) {
-					setTimeUntil(timeUntil(expirationDate))
+				if (expiration日期) {
+					setTimeUntil(timeUntil(expiration日期))
 				}
 			}, 1000)
 		}
@@ -34,18 +34,18 @@ const ExpirationBadge = ({
 				clearInterval(interval)
 			}
 		}
-	}, [expirationDate])
+	}, [expiration日期])
 
-	if (!expirationDate) {
+	if (!expiration日期) {
 		return null
 	}
 
-	const isExpired = expirationDate < new Date()
+	const isExpired = expiration日期 < new 日期()
 
 	return (
 		<Badge variant={isExpired ? "destructive" : "outline"}>
 			<Tooltip
-				content={`${expirationDate.toLocaleDateString()} ${expirationDate.toLocaleTimeString()}`}
+				content={`${expiration日期.toLocale日期String()} ${expiration日期.toLocaleTimeString()}`}
 			>
 				<span suppressHydrationWarning>
 					{isExpired ? "Expired" : `Expires ${timeUntilString}`}

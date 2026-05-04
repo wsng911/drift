@@ -1,19 +1,19 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@components/card"
+import { Card, CardContent, CardHeader, Card标题 } from "@components/card"
 import styles from "./settings-group.module.css"
 
 type Props =
 	| {
 			skeleton: true
 			title?: string
-			children?: React.ReactNode
+			children?: React.React否de
 	  }
 	| {
 			skeleton?: false
 			title: string
-			children: React.ReactNode
+			children: React.React否de
 	  }
 
-const SettingsGroup = ({ title, children, skeleton }: Props) => {
+const 设置Group = ({ title, children, skeleton }: Props) => {
 	if (skeleton) {
 		return (
 			<Card
@@ -27,14 +27,14 @@ const SettingsGroup = ({ title, children, skeleton }: Props) => {
 	return (
 		<Card>
 			<CardHeader>
-				<CardTitle>{title}</CardTitle>
+				<Card标题>{title}</Card标题>
 			</CardHeader>
-			<hr className="pb-4" />
+			<hr class名称="pb-4" />
 			<CardContent>
-				<div className={styles.content}>{children}</div>
+				<div class名称={styles.content}>{children}</div>
 			</CardContent>
 		</Card>
 	)
 }
 
-export default SettingsGroup
+export default 设置Group

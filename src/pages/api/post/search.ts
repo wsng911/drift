@@ -7,7 +7,7 @@ import { NextApiRequest, NextApiResponse } from "next"
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 	const query = req.query
 	const q = parseQueryParam(query.q)
-	const publicSearch = parseQueryParam(query.public)
+	const public搜索 = parseQueryParam(query.public)
 	const searchQuery = parseQueryParam(q)
 
 	if (!searchQuery) {
@@ -15,7 +15,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 		return
 	}
 
-	if (publicSearch) {
+	if (public搜索) {
 		const posts = await searchPosts(searchQuery)
 		return res.json(posts)
 	} else {

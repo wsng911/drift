@@ -11,131 +11,131 @@ const AlertDialog = AlertDialogPrimitive.Root
 const AlertDialogTrigger = AlertDialogPrimitive.Trigger
 
 const AlertDialogPortal = ({
-	className,
+	class名称,
 	children,
 	...props
 }: AlertDialogPrimitive.AlertDialogPortalProps) => (
-	<AlertDialogPrimitive.Portal className={cn(className)} {...props}>
-		<div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
+	<AlertDialogPrimitive.Portal class名称={cn(class名称)} {...props}>
+		<div class名称="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
 			{children}
 		</div>
 	</AlertDialogPrimitive.Portal>
 )
-AlertDialogPortal.displayName = AlertDialogPrimitive.Portal.displayName
+AlertDialogPortal.display名称 = AlertDialogPrimitive.Portal.display名称
 
 const AlertDialogOverlay = React.forwardRef<
 	React.ElementRef<typeof AlertDialogPrimitive.Overlay>,
 	React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Overlay>
->(({ className, ...props }, ref) => (
+>(({ class名称, ...props }, ref) => (
 	<AlertDialogPrimitive.Overlay
-		className={cn(
+		class名称={cn(
 			"fixed inset-0 z-50 bg-background/80 backdrop-blur-sm transition-opacity animate-in fade-in",
-			className
+			class名称
 		)}
 		{...props}
 		ref={ref}
 	/>
 ))
-AlertDialogOverlay.displayName = AlertDialogPrimitive.Overlay.displayName
+AlertDialogOverlay.display名称 = AlertDialogPrimitive.Overlay.display名称
 
 const AlertDialogContent = React.forwardRef<
 	React.ElementRef<typeof AlertDialogPrimitive.Content>,
 	React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Content>
->(({ className, ...props }, ref) => (
+>(({ class名称, ...props }, ref) => (
 	<AlertDialogPortal>
 		<AlertDialogOverlay />
 		<AlertDialogPrimitive.Content
 			ref={ref}
-			className={cn(
+			class名称={cn(
 				"fixed z-50 grid w-full max-w-lg scale-100 gap-4 border bg-background p-6 opacity-100 shadow-lg animate-in fade-in-90 slide-in-from-bottom-10 sm:rounded-lg sm:zoom-in-90 sm:slide-in-from-bottom-0 md:w-full",
-				className
+				class名称
 			)}
 			{...props}
 		/>
 	</AlertDialogPortal>
 ))
-AlertDialogContent.displayName = AlertDialogPrimitive.Content.displayName
+AlertDialogContent.display名称 = AlertDialogPrimitive.Content.display名称
 
 const AlertDialogHeader = ({
-	className,
+	class名称,
 	...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
 	<div
-		className={cn(
+		class名称={cn(
 			"flex flex-col space-y-2 text-center sm:text-left",
-			className
+			class名称
 		)}
 		{...props}
 	/>
 )
-AlertDialogHeader.displayName = "AlertDialogHeader"
+AlertDialogHeader.display名称 = "AlertDialogHeader"
 
 const AlertDialogFooter = ({
-	className,
+	class名称,
 	...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
 	<div
-		className={cn(
+		class名称={cn(
 			"flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
-			className
+			class名称
 		)}
 		{...props}
 	/>
 )
-AlertDialogFooter.displayName = "AlertDialogFooter"
+AlertDialogFooter.display名称 = "AlertDialogFooter"
 
-const AlertDialogTitle = React.forwardRef<
-	React.ElementRef<typeof AlertDialogPrimitive.Title>,
-	React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Title>
->(({ className, ...props }, ref) => (
-	<AlertDialogPrimitive.Title
+const AlertDialog标题 = React.forwardRef<
+	React.ElementRef<typeof AlertDialogPrimitive.标题>,
+	React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.标题>
+>(({ class名称, ...props }, ref) => (
+	<AlertDialogPrimitive.标题
 		ref={ref}
-		className={cn("text-lg font-semibold", className)}
+		class名称={cn("text-lg font-semibold", class名称)}
 		{...props}
 	/>
 ))
-AlertDialogTitle.displayName = AlertDialogPrimitive.Title.displayName
+AlertDialog标题.display名称 = AlertDialogPrimitive.标题.display名称
 
-const AlertDialogDescription = React.forwardRef<
-	React.ElementRef<typeof AlertDialogPrimitive.Description>,
-	React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Description>
->(({ className, ...props }, ref) => (
-	<AlertDialogPrimitive.Description
+const AlertDialog描述 = React.forwardRef<
+	React.ElementRef<typeof AlertDialogPrimitive.描述>,
+	React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.描述>
+>(({ class名称, ...props }, ref) => (
+	<AlertDialogPrimitive.描述
 		ref={ref}
-		className={cn("text-sm text-muted-foreground", className)}
+		class名称={cn("text-sm text-muted-foreground", class名称)}
 		{...props}
 	/>
 ))
-AlertDialogDescription.displayName =
-	AlertDialogPrimitive.Description.displayName
+AlertDialog描述.display名称 =
+	AlertDialogPrimitive.描述.display名称
 
 const AlertDialogAction = React.forwardRef<
 	React.ElementRef<typeof AlertDialogPrimitive.Action>,
 	React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Action>
->(({ className, ...props }, ref) => (
+>(({ class名称, ...props }, ref) => (
 	<AlertDialogPrimitive.Action
 		ref={ref}
-		className={cn(buttonVariants(), className)}
+		class名称={cn(buttonVariants(), class名称)}
 		{...props}
 	/>
 ))
-AlertDialogAction.displayName = AlertDialogPrimitive.Action.displayName
+AlertDialogAction.display名称 = AlertDialogPrimitive.Action.display名称
 
-const AlertDialogCancel = React.forwardRef<
-	React.ElementRef<typeof AlertDialogPrimitive.Cancel>,
-	React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Cancel>
->(({ className, ...props }, ref) => (
-	<AlertDialogPrimitive.Cancel
+const AlertDialog取消 = React.forwardRef<
+	React.ElementRef<typeof AlertDialogPrimitive.取消>,
+	React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.取消>
+>(({ class名称, ...props }, ref) => (
+	<AlertDialogPrimitive.取消
 		ref={ref}
-		className={cn(
+		class名称={cn(
 			buttonVariants({ variant: "outline" }),
 			"mt-2 sm:mt-0",
-			className
+			class名称
 		)}
 		{...props}
 	/>
 ))
-AlertDialogCancel.displayName = AlertDialogPrimitive.Cancel.displayName
+AlertDialog取消.display名称 = AlertDialogPrimitive.取消.display名称
 
 export {
 	AlertDialog,
@@ -143,8 +143,8 @@ export {
 	AlertDialogContent,
 	AlertDialogHeader,
 	AlertDialogFooter,
-	AlertDialogTitle,
-	AlertDialogDescription,
+	AlertDialog标题,
+	AlertDialog描述,
 	AlertDialogAction,
-	AlertDialogCancel
+	AlertDialog取消
 }

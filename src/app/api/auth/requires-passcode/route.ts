@@ -23,7 +23,7 @@ export default async function GET(req: NextRequest) {
 			JSON.stringify({ requiresPasscode: await getRequiresPasscode() }),
 			{
 				status: 200,
-				statusText: "OK",
+				statusText: "确定",
 				headers: {
 					"Content-Type": "application/json"
 				}
@@ -31,9 +31,9 @@ export default async function GET(req: NextRequest) {
 		)
 	}
 
-	return new Response(JSON.stringify({ error: "Not found" }), {
+	return new Response(JSON.stringify({ error: "否t found" }), {
 		status: 404,
-		statusText: "Not found",
+		statusText: "否t found",
 		headers: {
 			"Content-Type": "application/json"
 		}

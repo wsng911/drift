@@ -10,7 +10,7 @@ export type ToastProps = {
 	duration?: number
 	icon?: string
 	style?: React.CSSProperties
-	className?: string
+	class名称?: string
 	loading?: boolean
 	loadingProgress?: number
 }

@@ -1,14 +1,14 @@
-import { PageTitle } from "@components/page-title"
+import { Page标题 } from "@components/page-title"
 import { PageWrapper } from "@components/page-wrapper"
-import SettingsGroup from "@components/settings-group"
+import 设置Group from "@components/settings-group"
 
-export default function SettingsLoading() {
+export default function 设置Loading() {
 	return (
 		<>
-			<PageTitle>Settings</PageTitle>
+			<Page标题>设置</Page标题>
 			<PageWrapper>
-				<SettingsGroup skeleton />
-				<SettingsGroup skeleton />
+				<设置Group skeleton />
+				<设置Group skeleton />
 			</PageWrapper>
 		</>
 	)

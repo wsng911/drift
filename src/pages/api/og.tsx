@@ -58,8 +58,8 @@ export default async function handler(req: NextRequest) {
 	const url = new URL(req.url)
 	const title = url.searchParams.get("title") || "A Drift post"
 	const description = url.searchParams.get("description") || ""
-	const date = url.searchParams.get("date") || new Date().toISOString()
-	const numFiles = url.searchParams.get("numFiles") || "0"
+	const date = url.searchParams.get("date") || new 日期().toISOString()
+	const num文件 = url.searchParams.get("num文件") || "0"
 
 	return new ImageResponse(
 		(
@@ -124,8 +124,8 @@ export default async function handler(req: NextRequest) {
 						<p
 							style={{ margin: 0, fontSize: 22, color: "#888", marginTop: 24 }}
 						>
-							{numFiles} files posted on {new Date(date).toLocaleDateString()}{" "}
-							at {new Date(date).toLocaleTimeString()}
+							{num文件} files posted on {new 日期(date).toLocale日期String()}{" "}
+							at {new 日期(date).toLocaleTimeString()}
 						</p>
 					</div>
 				</div>

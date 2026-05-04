@@ -1,24 +1,24 @@
 import VisibilityBadge from "../badges/visibility-badge"
 import FadeIn from "@components/fade-in"
 import ExpirationBadge from "@components/badges/expiration-badge"
-import CreatedAgoBadge from "@components/badges/created-ago-badge"
+import 创建dAgoBadge from "@components/badges/created-ago-badge"
 import { useRouter } from "next/navigation"
 import styles from "./list-item.module.css"
 import Link from "@components/link"
-import type { PostWithFiles } from "@lib/server/prisma"
+import type { PostWith文件 } from "@lib/server/prisma"
 import { Badge } from "@components/badges/badge"
 import {
 	Card,
 	CardContent,
-	CardDescription,
+	Card描述,
 	CardHeader,
-	CardTitle
+	Card标题
 } from "@components/card"
 import {
 	ArrowUpCircle,
 	Code,
 	Database,
-	Edit,
+	编辑,
 	FileText,
 	MoreVertical,
 	Terminal,
@@ -37,16 +37,16 @@ const ListItem = ({
 	post,
 	isOwner,
 	deletePost,
-	hideActions
+	hide操作
 }: {
-	post: PostWithFiles
+	post: PostWith文件
 	isOwner?: boolean
 	deletePost: () => void
-	hideActions?: boolean
+	hide操作?: boolean
 }) => {
 	const router = useRouter()
 
-	const editACopy = () => {
+	const editA复制 = () => {
 		router.push(`/new/from/${post.id}`)
 	}
 
@@ -78,10 +78,10 @@ const ListItem = ({
 
 	return (
 		<FadeIn key={post.id} as="li">
-			<Card className="overflow-y-scroll h-42">
+			<Card class名称="overflow-y-scroll h-42">
 				<CardHeader>
-					<CardTitle className="flex items-center justify-between gap-2">
-						<span className={styles.titleText}>
+					<Card标题 class名称="flex items-center justify-between gap-2">
+						<span class名称={styles.titleText}>
 							<h4 style={{ display: "inline-block", margin: 0 }}>
 								<Link
 									colored
@@ -91,41 +91,41 @@ const ListItem = ({
 									{post.title}
 								</Link>
 							</h4>
-							<div className={styles.badges}>
+							<div class名称={styles.badges}>
 								<VisibilityBadge visibility={post.visibility} />
 								<Badge variant={"outline"}>
 									{post.files?.length === 1
 										? "1 file"
 										: `${post.files?.length || 0} files`}
 								</Badge>
-								<CreatedAgoBadge createdAt={post.createdAt} />
-								<ExpirationBadge postExpirationDate={post.expiresAt} />
+								<创建dAgoBadge createdAt={post.createdAt} />
+								<ExpirationBadge postExpiration日期={post.expiresAt} />
 							</div>
 						</span>
-						{!hideActions ? (
-							<span className="flex gap-2">
+						{!hide操作 ? (
+							<span class名称="flex gap-2">
 								<DropdownMenu>
 									<DropdownMenuTrigger asChild>
-										<MoreVertical className="cursor-pointer" />
+										<MoreVertical class名称="cursor-pointer" />
 									</DropdownMenuTrigger>
-									<DropdownMenuContent className="mt-2 border rounded-md shadow-sm border-border bg-background">
+									<DropdownMenuContent class名称="mt-2 border rounded-md shadow-sm border-border bg-background">
 										<DropdownMenuItem
 											onSelect={() => {
-												editACopy()
+												editA复制()
 											}}
-											className="cursor-pointer bg-background"
+											class名称="cursor-pointer bg-background"
 										>
-											<Edit className="w-4 h-4 mr-2" /> Edit a copy
+											<编辑 class名称="w-4 h-4 mr-2" /> 编辑 a copy
 										</DropdownMenuItem>
 										{isOwner && (
 											<DropdownMenuItem
 												onSelect={() => {
 													deletePost()
 												}}
-												className="cursor-pointer bg-background"
+												class名称="cursor-pointer bg-background"
 											>
-												<Trash className="w-4 h-4 mr-2" />
-												Delete
+												<Trash class名称="w-4 h-4 mr-2" />
+												删除
 											</DropdownMenuItem>
 										)}
 										{post.parentId && (
@@ -134,7 +134,7 @@ const ListItem = ({
 													viewParentClick()
 												}}
 											>
-												<ArrowUpCircle className="w-4 h-4 mr-2" />
+												<ArrowUpCircle class名称="w-4 h-4 mr-2" />
 												View parent
 											</DropdownMenuItem>
 										)}
@@ -142,23 +142,23 @@ const ListItem = ({
 								</DropdownMenu>
 							</span>
 						) : null}
-					</CardTitle>
+					</Card标题>
 					{post.description && (
-						<CardDescription>
-							<p className={styles.oneline}>{post.description}</p>
-						</CardDescription>
+						<Card描述>
+							<p class名称={styles.oneline}>{post.description}</p>
+						</Card描述>
 					)}
 				</CardHeader>
 				<CardContent>
-					<ul className={styles.files}>
+					<ul class名称={styles.files}>
 						{post?.files?.map(
-							(file: Pick<PostWithFiles, "files">["files"][0]) => {
+							(file: Pick<PostWith文件, "files">["files"][0]) => {
 								return (
-									<li key={file.id} className="text-black">
+									<li key={file.id} class名称="text-black">
 										<Link
 											colored
 											href={`/post/${post.id}#${file.title}`}
-											className="flex items-center gap-2 font-mono text-sm text-foreground"
+											class名称="flex items-center gap-2 font-mono text-sm text-foreground"
 										>
 											{getIconFromFilename(file.title)}
 											{file.title || "Untitled file"}

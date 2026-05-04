@@ -5,13 +5,13 @@ import ButtonGroup from "@components/button-group"
 import FileDropdown from "src/app/(drift)/(posts)/components/file-dropdown"
 import styles from "./post-buttons.module.css"
 import { useRouter } from "next/navigation"
-import { PostWithFiles } from "@lib/server/prisma"
+import { PostWith文件 } from "@lib/server/prisma"
 
 export const PostButtons = ({
 	post,
 	loading
 }: {
-	post?: PostWithFiles
+	post?: PostWith文件
 	loading?: boolean
 }) => {
 	const router = useRouter()
@@ -25,7 +25,7 @@ export const PostButtons = ({
 				return {
 					name: file.title,
 					input: file.content,
-					lastModified: new Date(file.updatedAt)
+					lastModified: new 日期(file.updatedAt)
 				}
 			})
 		).blob()
@@ -36,7 +36,7 @@ export const PostButtons = ({
 		link.remove()
 	}
 
-	const editACopy = () => {
+	const editA复制 = () => {
 		router.push(`/new/from/${postId}`)
 	}
 
@@ -45,10 +45,10 @@ export const PostButtons = ({
 	}
 
 	return (
-		<span className={styles.buttons}>
+		<span class名称={styles.buttons}>
 			<ButtonGroup verticalIfMobile>
-				<Button variant={"secondary"} onClick={editACopy} className="border-r">
-					Edit a Copy
+				<Button variant={"secondary"} onClick={editA复制} class名称="border-r">
+					编辑 a 复制
 				</Button>
 				{parentId && (
 					<Button variant={"secondary"} onClick={viewParentClick}>
@@ -58,9 +58,9 @@ export const PostButtons = ({
 				<Button
 					variant={"secondary"}
 					onClick={downloadClick}
-					className="border-r"
+					class名称="border-r"
 				>
-					Download as ZIP Archive
+					下载 as ZIP Archive
 				</Button>
 				<FileDropdown loading={loading} files={files || []} />
 			</ButtonGroup>

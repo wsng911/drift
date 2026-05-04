@@ -4,7 +4,7 @@ import { Input } from "@components/input"
 
 const titlePlaceholders = [
 	"How to...",
-	"Status update for ...",
+	"状态 update for ...",
 	"My new project",
 	"My new idea",
 	"Let's talk about...",
@@ -17,20 +17,20 @@ const placeholder = titlePlaceholders[3]
 type props = {
 	onChange: (e: ChangeEvent<HTMLInputElement>) => void
 	title?: string
-	className?: string
+	class名称?: string
 }
 
-function Title({ onChange, title, className }: props) {
+function 标题({ onChange, title, class名称 }: props) {
 	return (
-		<div className={className}>
+		<div class名称={class名称}>
 			<Input
 				placeholder={placeholder}
 				value={title}
 				onChange={onChange}
-				label="Title"
+				label="标题"
 			/>
 		</div>
 	)
 }
 
-export default memo(Title)
+export default memo(标题)

@@ -74,7 +74,7 @@ export function StaticPreview({
 }) {
 	return (
 		<article
-			className={styles.markdownPreview}
+			class名称={styles.markdownPreview}
 			dangerouslySetInnerHTML={{ __html: children }}
 			style={{
 				height
@@ -92,7 +92,7 @@ export function StaticPreviewSkeleton({
 }) {
 	return (
 		<div
-			className={clsx(styles.markdownPreview)}
+			class名称={clsx(styles.markdownPreview)}
 			style={{
 				height
 			}}

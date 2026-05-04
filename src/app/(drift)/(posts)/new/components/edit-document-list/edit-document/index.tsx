@@ -9,7 +9,7 @@ import { Card, CardContent, CardHeader } from "@components/card"
 type Props = {
 	title?: string
 	content?: string
-	setTitle?: (title: string) => void
+	set标题?: (title: string) => void
 	handleOnContentChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void
 	defaultTab?: "edit" | "preview"
 	remove?: () => void
@@ -21,14 +21,14 @@ function Document({
 	remove,
 	title,
 	content = "",
-	setTitle,
+	set标题,
 	defaultTab = "edit",
 	handleOnContentChange
 }: Props) {
-	const onTitleChange = useCallback(
+	const on标题Change = useCallback(
 		(event: ChangeEvent<HTMLInputElement>) =>
-			setTitle ? setTitle(event.target.value) : null,
-		[setTitle]
+			set标题 ? set标题(event.target.value) : null,
+		[set标题]
 	)
 
 	const removeFile = useCallback(
@@ -50,13 +50,13 @@ function Document({
 	)
 
 	return (
-		<Card className="min-h-[512px]">
+		<Card class名称="min-h-[512px]">
 			<CardHeader>
-				<div className={styles.fileNameContainer}>
+				<div class名称={styles.file名称Container}>
 					<Input
 						placeholder="MyFile.md"
 						value={title}
-						onChange={onTitleChange}
+						onChange={on标题Change}
 						label="Filename"
 						width={"100%"}
 						id={title}
@@ -70,7 +70,7 @@ function Document({
 						<Button
 							onClick={() => removeFile(remove)}
 							variant="outline"
-							className="border-color-[var(--border)] rounded-l-none border-l-0"
+							class名称="border-color-[var(--border)] rounded-l-none border-l-0"
 						>
 							<Trash height={18} />
 						</Button>
@@ -79,11 +79,11 @@ function Document({
 			</CardHeader>
 			<CardContent>
 				<DocumentTabs
-					isEditing={true}
+					is编辑ing={true}
 					defaultTab={defaultTab}
 					handleOnContentChange={handleOnContentChange}
 					// TODO: solve types
-					// @ts-expect-error Type 'HTMLDivElement' is missing the following properties from type 'HTMLTextAreaElement': autocomplete, cols, defaultValue, dirName, and 26 more
+					// @ts-expect-error Type 'HTMLDivElement' is missing the following properties from type 'HTMLTextAreaElement': autocomplete, cols, defaultValue, dir名称, and 26 more
 					onPaste={onPaste}
 					title={title}
 				>

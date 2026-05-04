@@ -9,10 +9,10 @@ export default function ButtonGroup({
 } & React.HTMLAttributes<HTMLDivElement>) {
 	return (
 		<div
-			className={clsx(
+			class名称={clsx(
 				styles["button-group"],
 				verticalIfMobile && styles.verticalIfMobile,
-				props.className
+				props.class名称
 			)}
 			{...props}
 		>

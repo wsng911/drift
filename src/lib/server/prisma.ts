@@ -25,12 +25,12 @@ export const prisma =
 
 // prisma.$use(async (params, next) => {
 // 	const result = await next(params)
-// 	return updateDates(result)
+// 	return update日期s(result)
 // })
 
 if (process.env.NODE_ENV !== "production") global.prisma = prisma
 
-const postWithFiles = Prisma.validator<Prisma.PostArgs>()({
+const postWith文件 = Prisma.validator<Prisma.PostArgs>()({
 	include: {
 		files: true
 	}
@@ -42,25 +42,25 @@ const postWithAuthor = Prisma.validator<Prisma.PostArgs>()({
 	}
 })
 
-const postWithFilesAndAuthor = Prisma.validator<Prisma.PostArgs>()({
+const postWith文件AndAuthor = Prisma.validator<Prisma.PostArgs>()({
 	include: {
 		files: true,
 		author: true
 	}
 })
 
-export type ServerPostWithFiles = Prisma.PostGetPayload<typeof postWithFiles>
+export type ServerPostWith文件 = Prisma.PostGetPayload<typeof postWith文件>
 export type ServerPostWithAuthor = Prisma.PostGetPayload<typeof postWithAuthor>
-export type ServerPostWithFilesAndAuthor = Prisma.PostGetPayload<
-	typeof postWithFilesAndAuthor
+export type ServerPostWith文件AndAuthor = Prisma.PostGetPayload<
+	typeof postWith文件AndAuthor
 >
 
-export type PostWithFiles = Omit<
-	ServerPostWithFiles,
+export type PostWith文件 = Omit<
+	ServerPostWith文件,
 	"files" | "updatedAt" | "createdAt" | "deletedAt" | "expiresAt"
 > & {
 	files: (Omit<
-		ServerPostWithFiles["files"][number],
+		ServerPostWith文件["files"][number],
 		"content" | "html" | "updatedAt" | "createdAt" | "deletedAt"
 	> & {
 		content: string
@@ -75,12 +75,12 @@ export type PostWithFiles = Omit<
 	expiresAt?: string
 }
 
-export type PostWithFilesAndAuthor = Omit<
-	ServerPostWithFilesAndAuthor,
+export type PostWith文件AndAuthor = Omit<
+	ServerPostWith文件AndAuthor,
 	"files" | "updatedAt" | "createdAt" | "deletedAt" | "expiresAt" | "author"
 > & {
 	files: (Omit<
-		ServerPostWithFilesAndAuthor["files"][number],
+		ServerPostWith文件AndAuthor["files"][number],
 		"content" | "html" | "updatedAt" | "createdAt" | "deletedAt"
 	> & {
 		content: string
@@ -91,7 +91,7 @@ export type PostWithFilesAndAuthor = Omit<
 	})[]
 
 	author: Omit<
-		ServerPostWithFilesAndAuthor["author"],
+		ServerPostWith文件AndAuthor["author"],
 		"createdAt" | "updatedAt"
 	> & {
 		createdAt: string
@@ -105,9 +105,9 @@ export type PostWithFilesAndAuthor = Omit<
 }
 
 export function serverPostToClientPost(
-	post: ServerPostWithFiles | ServerPostWithFilesAndAuthor
-): PostWithFilesAndAuthor | PostWithFiles {
-	let result: PostWithFiles | PostWithFilesAndAuthor = {
+	post: ServerPostWith文件 | ServerPostWith文件AndAuthor
+): PostWith文件AndAuthor | PostWith文件 {
+	let result: PostWith文件 | PostWith文件AndAuthor = {
 		...post,
 		files: post.files?.map((file) => ({
 			...file,
@@ -137,7 +137,7 @@ export function serverPostToClientPost(
 	return result
 }
 
-export const getFilesForPost = async (postId: string) => {
+export const get文件ForPost = async (postId: string) => {
 	const files = await prisma.file.findMany({
 		where: {
 			postId
@@ -147,7 +147,7 @@ export const getFilesForPost = async (postId: string) => {
 	return files
 }
 
-export async function getFilesByPost(postId: string) {
+export async function get文件ByPost(postId: string) {
 	const files = await prisma.file.findMany({
 		where: {
 			postId
@@ -160,11 +160,11 @@ export async function getFilesByPost(postId: string) {
 export async function getPostsByUser(userId: string): Promise<ServerPost[]>
 export async function getPostsByUser(
 	userId: string,
-	includeFiles: true
-): Promise<ServerPostWithFiles[]>
+	include文件: true
+): Promise<ServerPostWith文件[]>
 export async function getPostsByUser(
 	userId: ServerUser["id"],
-	withFiles?: boolean
+	with文件?: boolean
 ) {
 	const posts = await prisma.post.findMany({
 		where: {
@@ -181,7 +181,7 @@ export async function getPostsByUser(
 			authorId: true,
 			expiresAt: true,
 			visibility: true,
-			...(withFiles && {
+			...(with文件 && {
 				files: {
 					select: {
 						id: true,
@@ -207,9 +207,9 @@ export const getUserById = async (
 		select: {
 			id: true,
 			email: true,
-			// displayName: true,
+			// display名称: true,
 			role: true,
-			displayName: true,
+			display名称: true,
 			...selects
 		}
 	})
@@ -233,7 +233,7 @@ export const isUserAdmin = async (userId: ServerUser["id"]) => {
 export const createUser = async (
 	username: string,
 	password: string,
-	serverPassword?: string
+	server密码?: string
 ) => {
 	if (!username || !password) {
 		throw new Error("Missing param")
@@ -241,7 +241,7 @@ export const createUser = async (
 
 	if (
 		config.registration_password &&
-		serverPassword !== config.registration_password
+		server密码 !== config.registration_password
 	) {
 		throw new Error("Wrong registration password")
 	}
@@ -272,7 +272,7 @@ export const getPostById = async (
 export const getAllPosts = async (
 	options?: Prisma.PostFindManyArgs
 ): Promise<
-	ServerPost[] | ServerPostWithFiles[] | ServerPostWithFilesAndAuthor[]
+	ServerPost[] | ServerPostWith文件[] | ServerPostWith文件AndAuthor[]
 > => {
 	const posts = await prisma.post.findMany(options)
 	return posts
@@ -294,7 +294,7 @@ export const getAllUsers = async (
 			id: true,
 			email: true,
 			role: true,
-			displayName: true,
+			display名称: true,
 			posts: true,
 			createdAt: true
 		},
@@ -311,7 +311,7 @@ export const searchPosts = async (
 	}: {
 		userId?: ServerUser["id"]
 	} = {}
-): Promise<ServerPostWithFiles[]> => {
+): Promise<ServerPostWith文件[]> => {
 	const posts = await prisma.post.findMany({
 		where: {
 			OR: [
@@ -337,7 +337,7 @@ export const searchPosts = async (
 		}
 	})
 
-	return posts as ServerPostWithFiles[]
+	return posts as ServerPostWith文件[]
 }
 
 function generateApiToken() {
@@ -351,7 +351,7 @@ export const createApiToken = async (
 	const apiToken = await prisma.apiToken.create({
 		data: {
 			token: generateApiToken(),
-			expiresAt: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30 * 3),
+			expiresAt: new 日期(日期.now() + 1000 * 60 * 60 * 24 * 30 * 3),
 			user: {
 				connect: { id: userId }
 			},

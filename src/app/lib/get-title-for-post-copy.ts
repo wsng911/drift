@@ -14,16 +14,16 @@ const replaceLastInString = (
 	)
 }
 
-const getTitleForPostCopy = (title?: string) => {
+const get标题ForPost复制 = (title?: string) => {
 	if (!title) return ""
 
-	const numberAtEndOfTitle = title.split(" ").pop()
-	if (numberAtEndOfTitle) {
-		const number = parseInt(numberAtEndOfTitle)
+	const numberAtEndOf标题 = title.split(" ").pop()
+	if (numberAtEndOf标题) {
+		const number = parseInt(numberAtEndOf标题)
 		if (number) {
 			return replaceLastInString(
 				title,
-				numberAtEndOfTitle,
+				numberAtEndOf标题,
 				(number + 1).toString()
 			)
 		} else {
@@ -34,4 +34,4 @@ const getTitleForPostCopy = (title?: string) => {
 	}
 }
 
-export default getTitleForPostCopy
+export default get标题ForPost复制

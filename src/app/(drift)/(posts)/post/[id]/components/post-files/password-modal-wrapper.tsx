@@ -1,7 +1,7 @@
 "use client"
 
-import { PostWithFilesAndAuthor } from "@lib/server/prisma"
-import PasswordModal from "@components/password-modal"
+import { PostWith文件AndAuthor } from "@lib/server/prisma"
+import 密码Modal from "@components/password-modal"
 import { useRouter } from "next/navigation"
 import { useCallback, useEffect, useState } from "react"
 import { useToasts } from "@components/toasts"
@@ -9,12 +9,12 @@ import { useSessionSWR } from "@lib/use-session-swr"
 import { fetchWithUser } from "src/app/lib/fetch-with-user"
 
 type Props = {
-	setPost: (post: PostWithFilesAndAuthor) => void
-	postId: PostWithFilesAndAuthor["id"]
-	authorId: PostWithFilesAndAuthor["authorId"]
+	setPost: (post: PostWith文件AndAuthor) => void
+	postId: PostWith文件AndAuthor["id"]
+	authorId: PostWith文件AndAuthor["authorId"]
 }
 
-const PasswordModalWrapper = ({ setPost, postId, authorId }: Props) => {
+const 密码ModalWrapper = ({ setPost, postId, authorId }: Props) => {
 	const router = useRouter()
 	const { setToast } = useToasts()
 	const { session, isLoading } = useSessionSWR()
@@ -23,8 +23,8 @@ const PasswordModalWrapper = ({ setPost, postId, authorId }: Props) => {
 		: session?.user
 		? session?.user?.id === authorId
 		: false
-	const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false)
-	const onSubmit = useCallback(
+	const [is密码ModalOpen, setIs密码ModalOpen] = useState(false)
+	const on提交 = useCallback(
 		async (password: string) => {
 			const res = await fetchWithUser(
 				`/api/post/${postId}?password=${password}`,
@@ -46,7 +46,7 @@ const PasswordModalWrapper = ({ setPost, postId, authorId }: Props) => {
 
 			// TODO: properly check type
 			const data = (await res.json()) as {
-				post: PostWithFilesAndAuthor
+				post: PostWith文件AndAuthor
 				error?: string
 			}
 
@@ -57,7 +57,7 @@ const PasswordModalWrapper = ({ setPost, postId, authorId }: Props) => {
 						type: "error"
 					})
 				} else {
-					setIsPasswordModalOpen(false)
+					setIs密码ModalOpen(false)
 					setPost(data.post)
 				}
 			}
@@ -65,32 +65,32 @@ const PasswordModalWrapper = ({ setPost, postId, authorId }: Props) => {
 		[postId, setPost, setToast]
 	)
 
-	const onClose = () => {
-		setIsPasswordModalOpen(false)
+	const on关闭 = () => {
+		setIs密码ModalOpen(false)
 		router.push("/")
 	}
 
 	useEffect(() => {
 		if (isAuthor === true) {
-			onSubmit("author")
+			on提交("author")
 			setToast({
 				message:
 					"You're the author of this post, so you automatically have access to it.",
 				type: "default"
 			})
 		} else if (isAuthor === false) {
-			setIsPasswordModalOpen(true)
+			setIs密码ModalOpen(true)
 		}
-	}, [isAuthor, onSubmit, setToast])
+	}, [isAuthor, on提交, setToast])
 
 	return (
-		<PasswordModal
+		<密码Modal
 			creating={false}
-			onClose={onClose}
-			onSubmit={onSubmit}
-			isOpen={isPasswordModalOpen}
+			on关闭={on关闭}
+			on提交={on提交}
+			isOpen={is密码ModalOpen}
 		/>
 	)
 }
 
-export default PasswordModalWrapper
+export default 密码ModalWrapper

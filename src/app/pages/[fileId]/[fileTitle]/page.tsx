@@ -6,11 +6,11 @@ import {
 	getAllPosts,
 	getFileById,
 	getPostById,
-	ServerPostWithFiles
+	ServerPostWith文件
 } from "@lib/server/prisma"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { getURLFriendlyTitle } from "src/app/lib/get-url-friendly-title"
+import { getURLFriendly标题 } from "src/app/lib/get-url-friendly-title"
 
 export default async function FilePage({
 	params
@@ -28,12 +28,12 @@ export default async function FilePage({
 	}
 
 	return (
-		<main className="mx-auto max-w-3xl px-4 dark:prose-invert dark:bg-gray-800">
-			<h1 className="prose-2xl text-foreground ">{file.title}</h1>
-			<hr className="my-4 border-foreground" />
+		<main class名称="mx-auto max-w-3xl px-4 dark:prose-invert dark:bg-gray-800">
+			<h1 class名称="prose-2xl text-foreground ">{file.title}</h1>
+			<hr class名称="my-4 border-foreground" />
 			<article
 				dangerouslySetInnerHTML={{ __html: file.html.toString("utf-8") }}
-				className="dark:prose-dark prose"
+				class名称="dark:prose-dark prose"
 			/>
 		</main>
 	)
@@ -58,12 +58,12 @@ export async function generateStaticParams() {
 				in: ALLOWED_VISIBILITIES_FOR_WEBPAGE
 			}
 		}
-	})) as ServerPostWithFiles[]
+	})) as ServerPostWith文件[]
 
 	return posts.flatMap((post) => {
 		return post.files.map((file) => ({
 			fileId: file.id,
-			fileTitle: getURLFriendlyTitle(file.title)
+			file标题: getURLFriendly标题(file.title)
 		}))
 	})
 }

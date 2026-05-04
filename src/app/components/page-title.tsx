@@ -1,13 +1,13 @@
 import { cn } from "@lib/cn"
 import { PropsWithChildren } from "react"
 
-export function PageTitle({
+export function Page标题({
 	children,
-	className,
+	class名称,
 	...props
 }: PropsWithChildren<React.HTMLProps<HTMLHeadingElement>>) {
 	return (
-		<h1 className={cn("pb-2 pt-2 text-4xl font-bold", className)} {...props}>
+		<h1 class名称={cn("pb-2 pt-2 text-4xl font-bold", class名称)} {...props}>
 			{children}
 		</h1>
 	)

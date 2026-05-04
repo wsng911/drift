@@ -15,7 +15,7 @@ export default function MobileHeader() {
 	return (
 		<DropdownMenu.DropdownMenu>
 			<DropdownMenu.DropdownMenuTrigger
-				className={buttonVariants({ variant: "ghost" })}
+				class名称={buttonVariants({ variant: "ghost" })}
 				asChild
 			>
 				<Button aria-label="Menu" variant={"ghost"}>

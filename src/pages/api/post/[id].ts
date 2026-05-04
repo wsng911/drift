@@ -96,7 +96,7 @@ async function handlePut(req: NextApiRequest, res: NextApiResponse<unknown>) {
 		return res.status(400).json({ message: "Missing password" })
 	}
 
-	const hashedPassword = crypto
+	const hashed密码 = crypto
 		.createHash("sha256")
 		.update(password?.toString() || "")
 		.digest("hex")
@@ -108,7 +108,7 @@ async function handlePut(req: NextApiRequest, res: NextApiResponse<unknown>) {
 		},
 		data: {
 			visibility,
-			password: visibility === "protected" ? hashedPassword : null
+			password: visibility === "protected" ? hashed密码 : null
 		}
 	})
 
@@ -118,7 +118,7 @@ async function handlePut(req: NextApiRequest, res: NextApiResponse<unknown>) {
 	})
 }
 
-async function handleDelete(
+async function handle删除(
 	req: NextApiRequest,
 	res: NextApiResponse<unknown>
 ) {
@@ -158,7 +158,7 @@ async function handleDelete(
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 	if (req.method === "GET") return handleGet(req, res)
 	else if (req.method === "PUT") return handlePut(req, res)
-	else if (req.method === "DELETE") return handleDelete(req, res)
+	else if (req.method === "DELETE") return handle删除(req, res)
 }
 
 export default withMethods(["GET", "PUT", "DELETE"], handler)

@@ -3,9 +3,9 @@ import { getWelcomeContent } from "src/pages/api/welcome"
 import {
 	getAllPosts,
 	serverPostToClientPost,
-	ServerPostWithFilesAndAuthor
+	ServerPostWith文件AndAuthor
 } from "@lib/server/prisma"
-import PostList, { NoPostsFound } from "@components/post-list"
+import PostList, { 否PostsFound } from "@components/post-list"
 import { cache, Suspense } from "react"
 import ErrorBoundary from "@components/error/fallback"
 import DocumentTabs from "src/app/(drift)/(posts)/components/document-tabs"
@@ -22,15 +22,15 @@ export default async function Page() {
 		<PageWrapper>
 			{/* @ts-expect-error because of async RSC */}
 			<WelcomePost />
-			<h2 className="mt-4 text-2xl font-bold">Recent Public Posts</h2>
+			<h2 class名称="mt-4 text-2xl font-bold">Recent 公开 Posts</h2>
 			<ErrorBoundary>
 				<Suspense
 					fallback={
-						<PostList skeleton hideActions hideSearch initialPosts={[]} />
+						<PostList skeleton hide操作 hide搜索 initialPosts={[]} />
 					}
 				>
 					{/* @ts-expect-error because of async RSC */}
-					<PublicPostList />
+					<公开PostList />
 				</Suspense>
 			</ErrorBoundary>
 		</PageWrapper>
@@ -40,11 +40,11 @@ export default async function Page() {
 async function WelcomePost() {
 	const { content, rendered, title } = await getWelcomeData()
 	return (
-		<Card className="w-full">
+		<Card class名称="w-full">
 			<CardContent>
 				<DocumentTabs
 					defaultTab="preview"
-					isEditing={false}
+					is编辑ing={false}
 					staticPreview={rendered as string}
 					title={title}
 				>
@@ -55,7 +55,7 @@ async function WelcomePost() {
 	)
 }
 
-async function PublicPostList() {
+async function 公开PostList() {
 	const posts = (await getAllPosts({
 		select: {
 			id: true,
@@ -63,7 +63,7 @@ async function PublicPostList() {
 			createdAt: true,
 			author: {
 				select: {
-					displayName: true
+					display名称: true
 				}
 			},
 			visibility: true,
@@ -82,13 +82,13 @@ async function PublicPostList() {
 		orderBy: {
 			createdAt: "desc"
 		}
-	})) as unknown as ServerPostWithFilesAndAuthor[]
+	})) as unknown as ServerPostWith文件AndAuthor[]
 
 	if (posts.length === 0) {
-		return <NoPostsFound />
+		return <否PostsFound />
 	}
 
 	const clientPosts = posts.map((post) => serverPostToClientPost(post))
 
-	return <PostList initialPosts={clientPosts} hideActions hideSearch />
+	return <PostList initialPosts={clientPosts} hide操作 hide搜索 />
 }

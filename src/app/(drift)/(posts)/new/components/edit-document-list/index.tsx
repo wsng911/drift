@@ -6,11 +6,11 @@ function DocumentList({
 	docs,
 	removeDoc,
 	updateDocContent,
-	updateDocTitle,
+	updateDoc标题,
 	onPaste
 }: {
 	docs: Document[]
-	updateDocTitle: (i: number) => (title: string) => void
+	updateDoc标题: (i: number) => (title: string) => void
 	updateDocContent: (i: number) => (content: string) => void
 	removeDoc: (i: number) => () => void
 	onPaste?: (e: ClipboardEvent<HTMLTextAreaElement>) => void
@@ -30,7 +30,7 @@ function DocumentList({
 						onPaste={onPaste}
 						key={id}
 						remove={removeDoc(i)}
-						setTitle={updateDocTitle(i)}
+						set标题={updateDoc标题(i)}
 						handleOnContentChange={handleOnChange(i)}
 						content={content}
 						title={title}

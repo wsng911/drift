@@ -3,13 +3,13 @@
 import { useRouter } from "next/navigation"
 import { useCallback, useState, ClipboardEvent } from "react"
 import generateUUID from "@lib/generate-uuid"
-import EditDocumentList from "./edit-document-list"
+import 编辑DocumentList from "./edit-document-list"
 import { ChangeEvent } from "react"
-import getTitleForPostCopy from "src/app/lib/get-title-for-post-copy"
-// import Description from "./description"
-import { PostWithFiles } from "@lib/server/prisma"
-import PasswordModal from "../../../../components/password-modal"
-import Title from "./title"
+import get标题ForPost复制 from "src/app/lib/get-title-for-post-copy"
+// import 描述 from "./description"
+import { PostWith文件 } from "@lib/server/prisma"
+import 密码Modal from "../../../../components/password-modal"
+import 标题 from "./title"
 import FileDropzone from "./drag-and-drop"
 import { Button, buttonVariants } from "@components/button"
 import { useToasts } from "@components/toasts"
@@ -21,19 +21,19 @@ import { Spinner } from "@components/spinner"
 import { cn } from "@lib/cn"
 import { Calendar as CalendarIcon } from "react-feather"
 
-const DatePicker = dynamic(
-	() => import("@components/date-picker").then((m) => m.DatePicker),
+const 日期Picker = dynamic(
+	() => import("@components/date-picker").then((m) => m.日期Picker),
 	{
 		ssr: false,
 		loading: () => (
 			<Button
 				variant={"outline"}
-				className={cn(
+				class名称={cn(
 					"w-[280px] justify-start text-left font-normal",
 					"text-muted-foreground"
 				)}
 			>
-				<CalendarIcon className="w-4 h-4 mr-2" />
+				<CalendarIcon class名称="w-4 h-4 mr-2" />
 				<span>Won&apos;t expire</span>
 			</Button>
 		)
@@ -56,18 +56,18 @@ function Post({
 	initialPost,
 	newPostParent
 }: {
-	initialPost?: PostWithFiles
+	initialPost?: PostWith文件
 	newPostParent?: string
 }): JSX.Element {
 	const { setToast } = useToasts()
 	const router = useRouter()
-	const [title, setTitle] = useState(
-		getTitleForPostCopy(initialPost?.title) || ""
+	const [title, set标题] = useState(
+		get标题ForPost复制(initialPost?.title) || ""
 	)
-	const [description /*, setDescription */] = useState(
+	const [description /*, set描述 */] = useState(
 		initialPost?.description || ""
 	)
-	const [expiresAt, setExpiresAt] = useState<Date>()
+	const [expiresAt, setExpiresAt] = useState<日期>()
 
 	const defaultDocs: Document[] = initialPost
 		? initialPost.files?.map((doc) => ({
@@ -79,13 +79,13 @@ function Post({
 
 	const [docs, setDocs] = useState(defaultDocs)
 
-	const [passwordModalVisible, setPasswordModalVisible] = useState(false)
+	const [passwordModalVisible, set密码ModalVisible] = useState(false)
 
 	const sendRequest = useCallback(
 		async (
 			url: string,
 			data: {
-				expiresAt: Date | null
+				expiresAt: 日期 | null
 				visibility?: string
 				title?: string
 				files?: Document[]
@@ -118,24 +118,24 @@ function Post({
 					message: json.error ?? "Please fill out all fields",
 					type: "error"
 				})
-				setPasswordModalVisible(false)
-				setSubmitting(false)
+				set密码ModalVisible(false)
+				set提交ting(false)
 			}
 		},
 		[description, docs, router, setToast, title]
 	)
 
-	const [isSubmitting, setSubmitting] = useState(false)
+	const [is提交ting, set提交ting] = useState(false)
 
-	const onSubmit = useCallback(
+	const on提交 = useCallback(
 		async (visibility: string, password?: string) => {
 			if (visibility === "protected" && !password) {
-				setPasswordModalVisible(true)
+				set密码ModalVisible(true)
 				return
 			}
 
-			setPasswordModalVisible(false)
-			setSubmitting(true)
+			set密码ModalVisible(false)
+			set提交ting(true)
 
 			let hasErrored = false
 
@@ -167,7 +167,7 @@ function Post({
 			}
 
 			if (hasErrored) {
-				setSubmitting(false)
+				set提交ting(false)
 				return
 			}
 
@@ -183,29 +183,29 @@ function Post({
 		[docs, expiresAt, newPostParent, sendRequest, setToast, title]
 	)
 
-	const onChangeTitle = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+	const onChange标题 = useCallback((e: ChangeEvent<HTMLInputElement>) => {
 		e.preventDefault()
-		setTitle(e.target.value)
+		set标题(e.target.value)
 	}, [])
 
-	// const onChangeDescription = useCallback(
+	// const onChange描述 = useCallback(
 	// 	(e: ChangeEvent<HTMLInputElement>) => {
 	// 		e.preventDefault()
-	// 		setDescription(e.target.value)
+	// 		set描述(e.target.value)
 	// 	},
 	// 	[]
 	// )
 
-	function onClosePasswordModal() {
-		setPasswordModalVisible(false)
-		setSubmitting(false)
+	function on关闭密码Modal() {
+		set密码ModalVisible(false)
+		set提交ting(false)
 	}
 
-	function submitPassword(password: string) {
-		return onSubmit("protected", password)
+	function submit密码(password: string) {
+		return on提交("protected", password)
 	}
 
-	function updateDocTitle(i: number) {
+	function updateDoc标题(i: number) {
 		return (title: string) => {
 			setDocs((docs) =>
 				docs.map((doc, index) => (i === index ? { ...doc, title } : doc))
@@ -231,12 +231,12 @@ function Post({
 		// if no title is set and the only document is empty,
 		const isFirstDocEmpty =
 			docs.length <= 1 && (docs.length ? docs[0].title === "" : true)
-		const shouldSetTitle = !title && isFirstDocEmpty
-		if (shouldSetTitle) {
+		const shouldSet标题 = !title && isFirstDocEmpty
+		if (shouldSet标题) {
 			if (files.length === 1) {
-				setTitle(files[0].title)
+				set标题(files[0].title)
 			} else if (files.length > 1) {
-				setTitle("Uploaded files")
+				set标题("Uploaded files")
 			}
 		}
 
@@ -249,26 +249,26 @@ function Post({
 
 		if (pastedText) {
 			if (!title) {
-				setTitle("Pasted text")
+				set标题("Pasted text")
 			}
 		}
 	}
 
 	return (
-		<div className="flex flex-col flex-1 gap-4">
-			<Title title={title} onChange={onChangeTitle} className="py-4" />
-			{/* <Description description={description} onChange={onChangeDescription} /> */}
-			<EditDocumentList
+		<div class名称="flex flex-col flex-1 gap-4">
+			<标题 title={title} onChange={onChange标题} class名称="py-4" />
+			{/* <描述 description={description} onChange={onChange描述} /> */}
+			<编辑DocumentList
 				onPaste={onPaste}
 				docs={docs}
-				updateDocTitle={updateDocTitle}
+				updateDoc标题={updateDoc标题}
 				updateDocContent={updateDocContent}
 				removeDoc={removeDoc}
 			/>
 			<FileDropzone setDocs={uploadDocs} />
 
-			<div className="flex flex-col items-end justify-between gap-4 mt-4 sm:flex-row sm:items-center">
-				<span className="flex flex-1 gap-2">
+			<div class名称="flex flex-col items-end justify-between gap-4 mt-4 sm:flex-row sm:items-center">
+				<span class名称="flex flex-1 gap-2">
 					<Button
 						onClick={() => {
 							setDocs([
@@ -280,51 +280,51 @@ function Post({
 								}
 							])
 						}}
-						className="min-w-[120px] max-w-[200px] flex-1"
+						class名称="min-w-[120px] max-w-[200px] flex-1"
 						variant={"secondary"}
 					>
-						Add a File
+						添加 a File
 					</Button>
-					<DatePicker setExpiresAt={setExpiresAt} expiresAt={expiresAt} />
+					<日期Picker setExpiresAt={setExpiresAt} expiresAt={expiresAt} />
 				</span>
 				<ButtonDropdown>
 					<span
-						className={clsx(
+						class名称={clsx(
 							"w-full cursor-pointer rounded-br-none rounded-tr-none",
 							buttonVariants({
 								variant: "default"
 							})
 						)}
-						onClick={() => onSubmit("unlisted")}
+						onClick={() => on提交("unlisted")}
 					>
-						{isSubmitting ? <Spinner className="mr-2" /> : null}
-						Create Unlisted
+						{is提交ting ? <Spinner class名称="mr-2" /> : null}
+						创建 Unlisted
 					</span>
 					<span
-						className={clsx("w-full cursor-pointer")}
-						onClick={() => onSubmit("private")}
+						class名称={clsx("w-full cursor-pointer")}
+						onClick={() => on提交("private")}
 					>
-						Create Private
+						创建 私有
 					</span>
 					<span
-						className={clsx("w-full cursor-pointer")}
-						onClick={() => onSubmit("public")}
+						class名称={clsx("w-full cursor-pointer")}
+						onClick={() => on提交("public")}
 					>
-						Create Public
+						创建 公开
 					</span>
 					<span
-						className={clsx("w-full cursor-pointer")}
-						onClick={() => onSubmit("protected")}
+						class名称={clsx("w-full cursor-pointer")}
+						onClick={() => on提交("protected")}
 					>
-						Create with Password
+						创建 with 密码
 					</span>
 				</ButtonDropdown>
 			</div>
-			<PasswordModal
+			<密码Modal
 				creating={true}
 				isOpen={passwordModalVisible}
-				onClose={onClosePasswordModal}
-				onSubmit={submitPassword}
+				on关闭={on关闭密码Modal}
+				on提交={submit密码}
 			/>
 		</div>
 	)
@@ -337,7 +337,7 @@ export default Post
 // 	value,
 // 	onChange
 // }: {
-// 	date: Date
+// 	date: 日期
 // 	value: string
 // 	onChange: (date: string) => void
 // }) {

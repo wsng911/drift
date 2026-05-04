@@ -1,13 +1,13 @@
-import NewPost from "../../components/new"
+import 新建Post from "../../components/new"
 import { notFound, redirect } from "next/navigation"
 import {
 	getPostById,
 	serverPostToClientPost,
-	ServerPostWithFiles
+	ServerPostWith文件
 } from "@lib/server/prisma"
 import { getSession } from "@lib/server/session"
 
-async function NewFromExisting({
+async function 新建FromExisting({
 	params
 }: {
 	params: {
@@ -39,11 +39,11 @@ async function NewFromExisting({
 				}
 			}
 		}
-	})) as ServerPostWithFiles
+	})) as ServerPostWith文件
 
 	const clientPost = post ? serverPostToClientPost(post) : undefined
 
-	return <NewPost initialPost={clientPost} newPostParent={id} />
+	return <新建Post initialPost={clientPost} newPostParent={id} />
 }
 
-export default NewFromExisting
+export default 新建FromExisting

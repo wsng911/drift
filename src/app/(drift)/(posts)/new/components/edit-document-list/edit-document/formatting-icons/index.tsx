@@ -17,12 +17,12 @@ import React from "react"
 
 function FormattingIcons({
 	textareaRef,
-	className
+	class名称
 }: {
 	textareaRef?: RefObject<TextareaMarkdownRef>
-	className?: string
+	class名称?: string
 }) {
-	const formattingActions = useMemo(() => {
+	const formatting操作 = useMemo(() => {
 		const handleBoldClick = () => textareaRef?.current?.trigger("bold")
 		const handleItalicClick = () => textareaRef?.current?.trigger("italic")
 		const handleLinkClick = () => textareaRef?.current?.trigger("link")
@@ -65,8 +65,8 @@ function FormattingIcons({
 	}, [textareaRef])
 
 	return (
-		<div className={clsx(styles.actionWrapper, className)}>
-			{formattingActions.map(({ icon, name, action }) => (
+		<div class名称={clsx(styles.actionWrapper, class名称)}>
+			{formatting操作.map(({ icon, name, action }) => (
 				<Tooltip
 					content={name[0].toUpperCase() + name.slice(1).replace("-", " ")}
 					key={name}
@@ -79,7 +79,7 @@ function FormattingIcons({
 						variant="ghost"
 					>
 						{React.cloneElement(icon, {
-							className: "h-4 w-4"
+							class名称: "h-4 w-4"
 						})}
 					</Button>
 				</Tooltip>

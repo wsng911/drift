@@ -6,23 +6,23 @@ type PageSeoProps = {
 	title?: string
 	description?: string
 	isLoading?: boolean
-	isPrivate?: boolean
+	is私有?: boolean
 }
 
 // TODO: remove once fully migrated to new metadata API
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const PageSeo = ({
-	title: pageTitle,
+	title: page标题,
 	description = "A self-hostable clone of GitHub Gist",
-	isPrivate = false
+	is私有 = false
 }: PageSeoProps) => {
-	const title = `Drift${pageTitle ? ` - ${pageTitle}` : ""}`
+	const title = `Drift${page标题 ? ` - ${page标题}` : ""}`
 	return (
 		<>
 			<title>{title}</title>
 			<meta charSet="utf-8" />
-			{!isPrivate && <meta name="description" content={description} />}
-			{isPrivate && <meta name="robots" content="noindex" />}
+			{!is私有 && <meta name="description" content={description} />}
+			{is私有 && <meta name="robots" content="noindex" />}
 
 			<ThemeAndIcons />
 		</>
@@ -77,7 +77,7 @@ export function getMetadata({
 			description,
 			...overrides?.twitter
 		}),
-		applicationName: "Drift",
+		application名称: "Drift",
 		icons: [
 			{
 				rel: "icon",
@@ -105,7 +105,7 @@ export function getMetadata({
 		openGraph: undefinedIfHidden({
 			type: "website",
 			url: config.url,
-			siteName: "Drift",
+			site名称: "Drift",
 			title,
 			description,
 			...overrides?.openGraph

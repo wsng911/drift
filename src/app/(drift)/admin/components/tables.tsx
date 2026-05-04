@@ -3,7 +3,7 @@
 import { Button } from "@components/button"
 import { Spinner } from "@components/spinner"
 import { useToasts } from "@components/toasts"
-import { ServerPostWithFilesAndAuthor, UserWithPosts } from "@lib/server/prisma"
+import { ServerPostWith文件AndAuthor, UserWithPosts } from "@lib/server/prisma"
 import Link from "next/link"
 import { useState } from "react"
 import { fetchWithUser } from "src/app/lib/fetch-with-user"
@@ -14,7 +14,7 @@ export function UserTable({
 }: {
 	users?: {
 		createdAt: string
-		posts?: ServerPostWithFilesAndAuthor[]
+		posts?: ServerPostWith文件AndAuthor[]
 		id: string
 		email: string | null
 		role: string | null
@@ -61,14 +61,14 @@ export function UserTable({
 	}
 
 	return (
-		<table className="w-full overflow-x-auto">
-			<thead className="text-left">
+		<table class名称="w-full overflow-x-auto">
+			<thead class名称="text-left">
 				<tr>
-					<th>Name</th>
-					<th>Email</th>
+					<th>名称</th>
+					<th>邮箱</th>
 					<th>Role</th>
 					<th>User ID</th>
-					<th>Actions</th>
+					<th>操作</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -84,7 +84,7 @@ export function UserTable({
 						<td>{user.username ? user.username : "no name"}</td>
 						<td>{user.email}</td>
 						<td>{user.role}</td>
-						<td className={styles.id} title={user.id}>
+						<td class名称={styles.id} title={user.id}>
 							{user.id}
 						</td>
 						<td>
@@ -93,7 +93,7 @@ export function UserTable({
 								onClick={() => deleteUser(user.id)}
 								size={"sm"}
 							>
-								Delete
+								删除
 							</Button>
 						</td>
 					</tr>
@@ -153,15 +153,15 @@ export function PostTable({
 	}
 
 	return (
-		<table className="w-full overflow-x-auto">
-			<thead className="text-left">
+		<table class名称="w-full overflow-x-auto">
+			<thead class名称="text-left">
 				<tr>
-					<th>Title</th>
+					<th>标题</th>
 					<th>Author</th>
-					<th>Created</th>
+					<th>创建d</th>
 					<th>Visibility</th>
-					<th className={styles.id}>Post ID</th>
-					<th>Actions</th>
+					<th class名称={styles.id}>Post ID</th>
+					<th>操作</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -180,7 +180,7 @@ export function PostTable({
 							</Link>
 						</td>
 						<td>{"author" in post ? post.author?.name : "no author"}</td>
-						<td>{new Date(post.createdAt).toLocaleDateString()}</td>
+						<td>{new 日期(post.createdAt).toLocale日期String()}</td>
 						<td>{post.visibility}</td>
 						<td>{post.id}</td>
 						<td>
@@ -189,7 +189,7 @@ export function PostTable({
 								size={"sm"}
 								onClick={() => deletePost(post.id)}
 							>
-								Delete
+								删除
 							</Button>
 						</td>
 					</tr>

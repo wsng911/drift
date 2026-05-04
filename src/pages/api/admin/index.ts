@@ -28,7 +28,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 	const isAdmin = user?.role === "admin"
 
 	if (!isAdmin) {
-		return res.status(403).json({ error: "Not authorized" })
+		return res.status(403).json({ error: "否t authorized" })
 	}
 
 	switch (req.method) {

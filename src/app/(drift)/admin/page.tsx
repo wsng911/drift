@@ -1,13 +1,13 @@
 import {
 	getAllPosts,
 	getAllUsers,
-	PostWithFiles,
+	PostWith文件,
 	serverPostToClientPost,
-	ServerPostWithFiles
+	ServerPostWith文件
 } from "@lib/server/prisma"
 import { PostTable, UserTable } from "./components/tables"
 import { PageWrapper } from "@components/page-wrapper"
-import { PageTitle } from "@components/page-title"
+import { Page标题 } from "@components/page-title"
 
 export default async function AdminPage() {
 	const usersPromise = getAllUsers({
@@ -37,8 +37,8 @@ export default async function AdminPage() {
 	const [users, posts] = await Promise.all([usersPromise, postsPromise])
 
 	const serializedPosts = posts.map((post) =>
-		serverPostToClientPost(post as ServerPostWithFiles)
-	) as PostWithFiles[]
+		serverPostToClientPost(post as ServerPostWith文件)
+	) as PostWith文件[]
 
 	const serializedUsers = users.map((user) => {
 		return {
@@ -49,12 +49,12 @@ export default async function AdminPage() {
 
 	return (
 		<>
-			<PageTitle>Admin</PageTitle>
+			<Page标题>Admin</Page标题>
 			<PageWrapper>
-				<h2 className="mb-4 mt-4 text-2xl font-bold">Users</h2>
+				<h2 class名称="mb-4 mt-4 text-2xl font-bold">Users</h2>
 				{/* @ts-expect-error Type 'unknown' is not assignable to type  */}
 				<UserTable users={serializedUsers as unknown} />
-				<h2 className="mb-4 mt-4 text-2xl font-bold">Posts</h2>
+				<h2 class名称="mb-4 mt-4 text-2xl font-bold">Posts</h2>
 				<PostTable posts={serializedPosts} />
 			</PageWrapper>
 		</>

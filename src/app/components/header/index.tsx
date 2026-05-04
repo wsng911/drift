@@ -25,9 +25,9 @@ export default function Header() {
 	}, [])
 
 	return (
-		<header className="mt-4 flex h-16 items-center justify-start md:justify-between">
-			<span className="hidden items-center md:flex">
-				<Link href="/" className="mr-4 flex items-center">
+		<header class名称="mt-4 flex h-16 items-center justify-start md:justify-between">
+			<span class名称="hidden items-center md:flex">
+				<Link href="/" class名称="mr-4 flex items-center">
 					<Image
 						src={"/assets/logo.svg"}
 						width={32}
@@ -35,19 +35,19 @@ export default function Header() {
 						alt=""
 						priority
 					/>
-					<span className="bg-transparent pl-4 text-lg font-bold">Drift</span>
+					<span class名称="bg-transparent pl-4 text-lg font-bold">Drift</span>
 				</Link>
-				<nav className="flex space-x-4 lg:space-x-6">
-					<ul className="flex justify-center space-x-4">
+				<nav class名称="flex space-x-4 lg:space-x-6">
+					<ul class名称="flex justify-center space-x-4">
 						<NavLink href="/home">Home</NavLink>
 						<NavLink href="/new" disabled={!isAuthenticated}>
-							New
+							新建
 						</NavLink>
 						<NavLink href="/mine" disabled={!isAuthenticated}>
 							Yours
 						</NavLink>
 						<NavLink href="/settings" disabled={!isAuthenticated}>
-							Settings
+							设置
 						</NavLink>
 						{isAdmin && <NavLink href="/admin">Admin</NavLink>}
 						{isAuthenticated !== undefined && (
@@ -56,28 +56,28 @@ export default function Header() {
 									<NavLink href="/signout">Sign Out</NavLink>
 								)}
 								{isAuthenticated === false && (
-									<NavLink href="/signin">Sign In</NavLink>
+									<NavLink href="/signin">登录</NavLink>
 								)}
 							</>
 						)}
 					</ul>
 				</nav>
 			</span>
-			<span className="flex items-center justify-center md:hidden">
+			<span class名称="flex items-center justify-center md:hidden">
 				<MobileHeader />
 			</span>
 			{isMounted && (
 				<FadeIn>
 					<button
 						aria-hidden
-						className="ml-4 flex h-8 w-8 cursor-pointer items-center justify-center font-medium text-muted-foreground transition-colors hover:text-primary md:ml-0"
+						class名称="ml-4 flex h-8 w-8 cursor-pointer items-center justify-center font-medium text-muted-foreground transition-colors hover:text-primary md:ml-0"
 						onClick={toggleTheme}
 						title="Toggle theme"
 					>
 						{resolvedTheme === "dark" ? (
-							<Sun className="h-[16px] w-[16px]" />
+							<Sun class名称="h-[16px] w-[16px]" />
 						) : (
-							<Moon className="h-[16px] w-[16px]" />
+							<Moon class名称="h-[16px] w-[16px]" />
 						)}
 					</button>
 				</FadeIn>
@@ -108,7 +108,7 @@ function NavLink({ href, disabled, children }: NavLinkProps) {
 	return (
 		<Link
 			href={href}
-			className={cn(
+			class名称={cn(
 				baseClasses,
 				isActive && activeClasses,
 				disabled && disabledClasses

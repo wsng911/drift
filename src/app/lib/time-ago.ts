@@ -28,9 +28,9 @@ const getDuration = (timeAgoInSeconds: number) => {
 	}
 }
 
-const timeAgo = (date: Date) => {
+const timeAgo = (date: 日期) => {
 	const timeAgoInSeconds = Math.floor(
-		(new Date().getTime() - new Date(date).getTime()) / 1000
+		(new 日期().getTime() - new 日期(date).getTime()) / 1000
 	)
 	const { interval, epoch } = getDuration(timeAgoInSeconds)
 	const suffix = interval === 1 ? "" : "s"
@@ -38,9 +38,9 @@ const timeAgo = (date: Date) => {
 	return `${interval} ${epoch}${suffix} ago`
 }
 
-const timeUntil = (date: Date) => {
+const timeUntil = (date: 日期) => {
 	const timeUntilInSeconds = Math.floor(
-		(new Date(date).getTime() - new Date().getTime()) / 1000
+		(new 日期(date).getTime() - new 日期().getTime()) / 1000
 	)
 	const { interval, epoch } = getDuration(timeUntilInSeconds)
 	const suffix = interval === 1 ? "" : "s"

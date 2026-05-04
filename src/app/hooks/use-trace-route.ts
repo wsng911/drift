@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react"
 
-function useTraceUpdate(props: { [key: string]: unknown }) {
+function useTrace更新(props: { [key: string]: unknown }) {
 	const prev = useRef(props)
 	useEffect(() => {
 		const changedProps = Object.entries(props).reduce((ps, [k, v]) => {
@@ -16,4 +16,4 @@ function useTraceUpdate(props: { [key: string]: unknown }) {
 	})
 }
 
-export default useTraceUpdate
+export default useTrace更新

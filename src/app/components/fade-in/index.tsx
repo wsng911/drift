@@ -11,12 +11,12 @@ function FadeIn({
 }: {
 	duration?: number
 	delay?: number
-	children: React.ReactNode
+	children: React.React否de
 	as?: React.ElementType | JSX.Element
 } & React.HTMLAttributes<HTMLElement>) {
 	if (as !== null && typeof as === "object") {
 		return React.cloneElement(as, {
-			className: styles.fadeIn,
+			class名称: styles.fadeIn,
 			style: {
 				...(as.props.style || {}),
 				animationDuration: duration + "ms",
@@ -28,7 +28,7 @@ function FadeIn({
 	return (
 		<Element
 			{...delegated}
-			className={styles.fadeIn}
+			class名称={styles.fadeIn}
 			style={{
 				...(delegated.style || {}),
 				animationDuration: duration + "ms",

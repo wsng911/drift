@@ -5,7 +5,7 @@ import { redirect } from "next/navigation"
 export default async function AdminLayout({
 	children
 }: {
-	children: React.ReactNode
+	children: React.React否de
 }) {
 	const user = await getCurrentUser()
 	const isAdmin = user?.role === "admin"

@@ -15,13 +15,13 @@ const CmdK = dynamic(() => import("@components/cmdk"), { ssr: false })
 export default async function RootLayout({
 	children
 }: {
-	children: React.ReactNode
+	children: React.React否de
 }) {
 	return (
 		// suppressHydrationWarning is required because of next-themes
 		<html
 			lang="en"
-			className={clsx(inter.variable, "mx-auto w-[var(--main-content)]")}
+			class名称={clsx(inter.variable, "mx-auto w-[var(--main-content)]")}
 			suppressHydrationWarning
 		>
 			<body>

@@ -42,24 +42,24 @@ export interface ButtonProps
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 	(
-		{ className, variant, size, loading, children, asChild = false, ...props },
+		{ class名称, variant, size, loading, children, asChild = false, ...props },
 		ref
 	) => {
 		const Comp = asChild ? Slot : "button"
 
 		return (
 			<Comp
-				className={cn(buttonVariants({ variant, size, className }))}
+				class名称={cn(buttonVariants({ variant, size, class名称 }))}
 				ref={ref}
 				{...props}
 			>
-				{loading ? <Spinner className="mr-2" /> : null}
+				{loading ? <Spinner class名称="mr-2" /> : null}
 				{children}
 			</Comp>
 		)
 	}
 )
 
-Button.displayName = "Button"
+Button.display名称 = "Button"
 
 export { Button, buttonVariants }

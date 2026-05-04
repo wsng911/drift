@@ -5,15 +5,15 @@ import { Tooltip } from "@components/tooltip"
 import DocumentTabs from "src/app/(drift)/(posts)/components/document-tabs"
 import Link from "next/link"
 import { memo } from "react"
-import { Download, ExternalLink, Globe } from "react-feather"
+import { 下载, ExternalLink, Globe } from "react-feather"
 import styles from "./document.module.css"
-import { getURLFriendlyTitle } from "src/app/lib/get-url-friendly-title"
-import { PostWithFiles, ServerPost } from "@lib/server/prisma"
+import { getURLFriendly标题 } from "src/app/lib/get-url-friendly-title"
+import { PostWith文件, ServerPost } from "@lib/server/prisma"
 import { isAllowedVisibilityForWebpage } from "@lib/constants"
 import { Card, CardContent, CardHeader } from "@components/card"
-type SharedProps = {
+type 分享dProps = {
 	initialTab: "edit" | "preview"
-	file?: PostWithFiles["files"][0]
+	file?: PostWith文件["files"][0]
 	post?: Pick<ServerPost, "id" | "title" | "visibility">
 }
 
@@ -25,9 +25,9 @@ type Props = (
 			skeleton?: false
 	  }
 ) &
-	SharedProps
+	分享dProps
 
-const DownloadButtons = ({
+const 下载Buttons = ({
 	rawLink,
 	siteLink
 }: {
@@ -36,20 +36,20 @@ const DownloadButtons = ({
 }) => {
 	return (
 		<ButtonGroup>
-			<Tooltip content="Download" delayDuration={200}>
+			<Tooltip content="下载" delayDuration={200}>
 				<Link
 					href={`${rawLink}?download=true`}
 					target="_blank"
 					rel="noopener noreferrer"
 				>
 					<Button
-						aria-label="Download"
+						aria-label="下载"
 						size="sm"
-						className="bg-transparent border-none"
+						class名称="bg-transparent border-none"
 						variant={"ghost"}
 					>
-						<Download className="w-4 h-4 " />
-						<span className="sr-only">Download</span>
+						<下载 class名称="w-4 h-4 " />
+						<span class名称="sr-only">下载</span>
 					</Button>
 				</Link>
 			</Tooltip>
@@ -58,12 +58,12 @@ const DownloadButtons = ({
 					<Link href={rawLink || ""} target="_blank" rel="noopener noreferrer">
 						<Button
 							aria-label="Open raw file in new tab"
-							className="bg-transparent border-none"
+							class名称="bg-transparent border-none"
 							size="sm"
 							variant={"ghost"}
 						>
-							<ExternalLink className="w-4 h-4" />
-							<span className="sr-only">Open raw file in new tab</span>
+							<ExternalLink class名称="w-4 h-4" />
+							<span class名称="sr-only">Open raw file in new tab</span>
 						</Button>
 					</Link>
 				</Tooltip>
@@ -73,12 +73,12 @@ const DownloadButtons = ({
 					<Link href={siteLink || ""} target="_blank" rel="noopener noreferrer">
 						<Button
 							aria-label="Open as webpage"
-							className="bg-transparent border-none"
+							class名称="bg-transparent border-none"
 							size="sm"
 							variant={"ghost"}
 						>
-							<Globe className="w-4 h-4" />
-							<span className="sr-only">Open as webpage</span>
+							<Globe class名称="w-4 h-4" />
+							<span class名称="sr-only">Open as webpage</span>
 						</Button>
 					</Link>
 				</Tooltip>
@@ -91,11 +91,11 @@ const Document = ({ skeleton, ...props }: Props) => {
 	if (skeleton) {
 		return (
 			<>
-				<div className={styles.card}>
+				<div class名称={styles.card}>
 					<div>
 						<Skeleton width={"100%"} height={36} />
 					</div>
-					<div className={styles.documentContainer}>
+					<div class名称={styles.documentContainer}>
 						<Skeleton width={175} height={36} borderRadius={"4px 4px 0 0"} />
 						<Skeleton
 							width={"100%"}
@@ -144,35 +144,35 @@ const Document = ({ skeleton, ...props }: Props) => {
 } */
 	return (
 		<>
-			<Card className="border-gray-200 dark:border-gray-900">
+			<Card class名称="border-gray-200 dark:border-gray-900">
 				<CardHeader
 					id={file?.title}
-					className="flex flex-row items-center justify-between py-1 bg-gray-200 dark:bg-gray-900"
+					class名称="flex flex-row items-center justify-between py-1 bg-gray-200 dark:bg-gray-900"
 				>
 					<Link
 						href={`#${file?.title}`}
 						aria-label="File"
 						// show an # when hovered avia :after
-						className="text-gray-900 hover:after:ml-1 hover:after:content-[#] dark:text-gray-100"
+						class名称="text-gray-900 hover:after:ml-1 hover:after:content-[#] dark:text-gray-100"
 					>
 						{file?.title}
 					</Link>
 					{/* TODO: switch to api once next.js bug is fixed */}
-					{/* Not /api/ because of rewrites defined in next.config.mjs */}
-					<DownloadButtons
+					{/* 否t /api/ because of rewrites defined in next.config.mjs */}
+					<下载Buttons
 						rawLink={`/api/file/raw/${file?.id}`}
 						siteLink={
 							file && post && isAllowedVisibilityForWebpage(post.visibility)
-								? `/pages/${file.id}/${getURLFriendlyTitle(file?.title || "")}`
+								? `/pages/${file.id}/${getURLFriendly标题(file?.title || "")}`
 								: undefined
 						}
 					/>
 				</CardHeader>
-				<CardContent className="flex flex-col h-full pt-2">
+				<CardContent class名称="flex flex-col h-full pt-2">
 					<DocumentTabs
 						defaultTab={props.initialTab}
 						staticPreview={file?.html}
-						isEditing={false}
+						is编辑ing={false}
 					>
 						{file?.content || ""}
 					</DocumentTabs>

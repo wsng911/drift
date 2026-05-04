@@ -1,3 +1,3 @@
-export default function NewLayout({ children }: { children: React.ReactNode }) {
+export default function 新建Layout({ children }: { children: React.React否de }) {
 	return <>{children}</>
 }

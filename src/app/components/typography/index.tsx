@@ -1,17 +1,17 @@
 import { PropsWithChildren } from "react"
 import { cn } from "@lib/cn"
 
-type ClassProp = { className?: string }
+type ClassProp = { class名称?: string }
 
 export function TypographyH1({
 	children,
-	className
+	class名称
 }: PropsWithChildren<ClassProp>) {
 	return (
 		<h1
-			className={cn(
+			class名称={cn(
 				"scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl",
-				className
+				class名称
 			)}
 		>
 			{children}
@@ -21,13 +21,13 @@ export function TypographyH1({
 
 export function TypographyH2({
 	children,
-	className
+	class名称
 }: PropsWithChildren<ClassProp>) {
 	return (
 		<h2
-			className={cn(
+			class名称={cn(
 				"scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0",
-				className
+				class名称
 			)}
 		>
 			{children}
@@ -37,13 +37,13 @@ export function TypographyH2({
 
 export function TypographyH3({
 	children,
-	className
+	class名称
 }: PropsWithChildren<ClassProp>) {
 	return (
 		<h3
-			className={cn(
+			class名称={cn(
 				"scroll-m-20 text-2xl font-semibold tracking-tight",
-				className
+				class名称
 			)}
 		>
 			{children}
@@ -53,13 +53,13 @@ export function TypographyH3({
 
 export function TypographyH4({
 	children,
-	className
+	class名称
 }: PropsWithChildren<ClassProp>) {
 	return (
 		<h4
-			className={cn(
+			class名称={cn(
 				"scroll-m-20 text-xl font-semibold tracking-tight",
-				className
+				class名称
 			)}
 		>
 			{children}
@@ -69,10 +69,10 @@ export function TypographyH4({
 
 export function TypographyP({
 	children,
-	className
+	class名称
 }: PropsWithChildren<ClassProp>) {
 	return (
-		<p className={cn("leading-7 [&:not(:first-child)]:mt-6", className)}>
+		<p class名称={cn("leading-7 [&:not(:first-child)]:mt-6", class名称)}>
 			{children}
 		</p>
 	)
@@ -80,10 +80,10 @@ export function TypographyP({
 
 export function TypographyBlockquote({
 	children,
-	className
+	class名称
 }: PropsWithChildren<ClassProp>) {
 	return (
-		<blockquote className={cn("mt-6 border-l-2 pl-6 italic", className)}>
+		<blockquote class名称={cn("mt-6 border-l-2 pl-6 italic", class名称)}>
 			{children}
 		</blockquote>
 	)
@@ -91,42 +91,42 @@ export function TypographyBlockquote({
 
 export function TypographyTable({
 	children,
-	className
+	class名称
 }: PropsWithChildren<ClassProp>) {
 	return (
-		<div className={cn("my-6 w-full overflow-y-auto", className)}>
-			<table className="w-full">{children}</table>
+		<div class名称={cn("my-6 w-full overflow-y-auto", class名称)}>
+			<table class名称="w-full">{children}</table>
 		</div>
 	)
 }
 
 export function TableHead({
 	children,
-	className
+	class名称
 }: PropsWithChildren<ClassProp>) {
 	return (
-		<thead className={className}>
-			<tr className="m-0 border-t p-0 even:bg-muted">{children}</tr>
+		<thead class名称={class名称}>
+			<tr class名称="m-0 border-t p-0 even:bg-muted">{children}</tr>
 		</thead>
 	)
 }
 
 export function TableBody({
 	children,
-	className
+	class名称
 }: PropsWithChildren<ClassProp>) {
-	return <tbody className={className}>{children}</tbody>
+	return <tbody class名称={class名称}>{children}</tbody>
 }
 
 export function TableHeader({
 	children,
-	className
+	class名称
 }: PropsWithChildren<ClassProp>) {
 	return (
 		<th
-			className={cn(
+			class名称={cn(
 				"border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right",
-				className
+				class名称
 			)}
 		>
 			{children}
@@ -136,10 +136,10 @@ export function TableHeader({
 
 export function TableRow({
 	children,
-	className
+	class名称
 }: PropsWithChildren<ClassProp>) {
 	return (
-		<tr className={cn("m-0 border-t p-0 even:bg-muted", className)}>
+		<tr class名称={cn("m-0 border-t p-0 even:bg-muted", class名称)}>
 			{children}
 		</tr>
 	)
@@ -147,13 +147,13 @@ export function TableRow({
 
 export function TableCell({
 	children,
-	className
+	class名称
 }: PropsWithChildren<ClassProp>) {
 	return (
 		<td
-			className={cn(
+			class名称={cn(
 				"border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right",
-				className
+				class名称
 			)}
 		>
 			{children}
@@ -163,10 +163,10 @@ export function TableCell({
 
 export function TypographyList({
 	children,
-	className
+	class名称
 }: PropsWithChildren<ClassProp>) {
 	return (
-		<ul className={cn("my-6 ml-6 list-disc [&>li]:mt-2", className)}>
+		<ul class名称={cn("my-6 ml-6 list-disc [&>li]:mt-2", class名称)}>
 			{children}
 		</ul>
 	)
@@ -174,13 +174,13 @@ export function TypographyList({
 
 export function TypographyInlineCode({
 	children,
-	className
+	class名称
 }: PropsWithChildren<ClassProp>) {
 	return (
 		<code
-			className={cn(
+			class名称={cn(
 				"relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold",
-				className
+				class名称
 			)}
 		>
 			{children}
@@ -190,28 +190,28 @@ export function TypographyInlineCode({
 
 export function TypographyLead({
 	children,
-	className
+	class名称
 }: PropsWithChildren<ClassProp>) {
 	return (
-		<p className={cn("text-xl text-muted-foreground", className)}>{children}</p>
+		<p class名称={cn("text-xl text-muted-foreground", class名称)}>{children}</p>
 	)
 }
 
 export function TypographyLarge({
 	children,
-	className
+	class名称
 }: PropsWithChildren<ClassProp>) {
 	return (
-		<div className={cn("text-lg font-semibold", className)}>{children}</div>
+		<div class名称={cn("text-lg font-semibold", class名称)}>{children}</div>
 	)
 }
 
 export function TypographySmall({
 	children,
-	className
+	class名称
 }: PropsWithChildren<ClassProp>) {
 	return (
-		<small className={cn("text-sm font-medium leading-none", className)}>
+		<small class名称={cn("text-sm font-medium leading-none", class名称)}>
 			{children}
 		</small>
 	)
@@ -219,9 +219,9 @@ export function TypographySmall({
 
 export function TypographyMuted({
 	children,
-	className
+	class名称
 }: PropsWithChildren<ClassProp>) {
 	return (
-		<p className={cn("text-sm text-muted-foreground", className)}>{children}</p>
+		<p class名称={cn("text-sm text-muted-foreground", class名称)}>{children}</p>
 	)
 }

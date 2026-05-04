@@ -8,17 +8,17 @@ import { cn } from "@lib/cn"
 const TooltipWrapper = ({
 	children,
 	content,
-	className,
+	class名称,
 	...props
 }: {
-	children: React.ReactNode
-	content: React.ReactNode
-	className?: string
+	children: React.React否de
+	content: React.React否de
+	class名称?: string
 } & TooltipPrimitive.TooltipProps) => {
 	return (
 		<TooltipProvider>
 			<Tooltip {...props}>
-				<TooltipTrigger asChild className={className}>
+				<TooltipTrigger asChild class名称={class名称}>
 					{children}
 				</TooltipTrigger>
 
@@ -40,16 +40,16 @@ const TooltipTrigger = TooltipPrimitive.Trigger
 const TooltipContent = React.forwardRef<
 	React.ElementRef<typeof TooltipPrimitive.Content>,
 	React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>
->(({ className, sideOffset = 4, ...props }, ref) => (
+>(({ class名称, sideOffset = 4, ...props }, ref) => (
 	<TooltipPrimitive.Content
 		ref={ref}
 		sideOffset={sideOffset}
-		className={cn(
+		class名称={cn(
 			"z-50 overflow-hidden rounded-md border bg-popover px-3 py-1.5 text-sm text-popover-foreground shadow-md animate-in fade-in-50 duration-75 data-[side=bottom]:slide-in-from-top-1 data-[side=left]:slide-in-from-right-1 data-[side=right]:slide-in-from-left-1 data-[side=top]:slide-in-from-bottom-1",
-			className
+			class名称
 		)}
 		{...props}
 	/>
 ))
 
-TooltipContent.displayName = TooltipPrimitive.Content.displayName
+TooltipContent.display名称 = TooltipPrimitive.Content.display名称

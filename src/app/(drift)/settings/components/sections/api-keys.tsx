@@ -2,7 +2,7 @@
 
 import { Button } from "@components/button"
 import { Input } from "@components/input"
-import Note from "@components/note"
+import 否te from "@components/note"
 import { Spinner } from "@components/spinner"
 import { useToasts } from "@components/toasts"
 import {
@@ -28,25 +28,25 @@ const APIKeys = ({
 		initialTokens
 	})
 
-	const [submitting, setSubmitting] = useState<boolean>(false)
-	const [newToken, setNewToken] = useState<string>("")
+	const [submitting, set提交ting] = useState<boolean>(false)
+	const [newToken, set新建Token] = useState<string>("")
 
-	const onChangeNewToken = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setNewToken(e.target.value)
+	const onChange新建Token = (e: React.ChangeEvent<HTMLInputElement>) => {
+		set新建Token(e.target.value)
 	}
 
-	const onCreateTokenClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
+	const on创建TokenClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault()
-		setSubmitting(true)
+		set提交ting(true)
 		try {
 			const createdToken = await createToken(newToken)
-			setNewToken("")
+			set新建Token("")
 			await copyToClipboard(createdToken?.token || "")
 			setToast({
 				message: "Your new API key has been copied to your clipboard.",
 				type: "success"
 			})
-			setSubmitting(false)
+			set提交ting(false)
 		} catch (e) {
 			if (e instanceof Error) {
 				setToast({
@@ -54,7 +54,7 @@ const APIKeys = ({
 					type: "error"
 				})
 			}
-			setSubmitting(false)
+			set提交ting(false)
 		}
 	}
 
@@ -70,47 +70,47 @@ const APIKeys = ({
 	return (
 		<>
 			{!hasError && (
-				<Note type="info">
+				<否te type="info">
 					API keys allow you to access the API from 3rd party tools.
-				</Note>
+				</否te>
 			)}
-			{hasError && <Note type="error">{error?.message}</Note>}
-			<form className={styles.form}>
-				<TypographyH4>Create new</TypographyH4>
-				<fieldset className={styles.fieldset}>
+			{hasError && <否te type="error">{error?.message}</否te>}
+			<form class名称={styles.form}>
+				<TypographyH4>创建 new</TypographyH4>
+				<fieldset class名称={styles.fieldset}>
 					<Input
 						type="text"
 						value={newToken}
-						onChange={onChangeNewToken}
+						onChange={onChange新建Token}
 						aria-label="API Key name"
-						placeholder="Name"
+						placeholder="名称"
 					/>
 					<Button
-						onClick={onCreateTokenClick}
+						onClick={on创建TokenClick}
 						disabled={!newToken}
 						loading={submitting}
 					>
-						Submit
+						提交
 					</Button>
 				</fieldset>
 			</form>
 
-			<div className={styles.tokens}>
+			<div class名称={styles.tokens}>
 				{data ? (
 					data?.length ? (
 						<table width={"100%"}>
 							<thead>
 								<tr>
-									<th>Name</th>
+									<th>名称</th>
 									<th>Expires</th>
-									<th>Delete</th>
+									<th>删除</th>
 								</tr>
 							</thead>
 							<tbody>
 								{data?.map((token) => (
 									<tr key={token.id}>
 										<td>{token.name}</td>
-										<td>{new Date(token.expiresAt).toDateString()}</td>
+										<td>{new 日期(token.expiresAt).to日期String()}</td>
 										<td>
 											<Button type="button" onClick={() => onRevoke(token.id)}>
 												Revoke
@@ -121,8 +121,8 @@ const APIKeys = ({
 							</tbody>
 						</table>
 					) : (
-						<p className="p-4 text-center text-muted-foreground">
-							No API keys found.
+						<p class名称="p-4 text-center text-muted-foreground">
+							否 API keys found.
 						</p>
 					)
 				) : (

@@ -1,11 +1,11 @@
-import Note from "@components/note"
+import 否te from "@components/note"
 import { getMetadata } from "src/app/lib/metadata"
 
 export default function ExpiredPage() {
 	return (
-		<Note type="error">
+		<否te type="error">
 			<strong>Error:</strong> The Drift you&apos;re trying to view has expired.
-		</Note>
+		</否te>
 	)
 }
 

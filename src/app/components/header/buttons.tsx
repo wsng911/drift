@@ -7,7 +7,7 @@ import {
 	Home,
 	Moon,
 	PlusCircle,
-	Settings,
+	设置,
 	Sun,
 	User,
 	UserX
@@ -40,7 +40,7 @@ type Tab = {
 	  }
 )
 
-function NavButton({ className, ...tab }: Tab & { className?: string }) {
+function NavButton({ class名称, ...tab }: Tab & { class名称?: string }) {
 	const segment = useSelectedLayoutSegments().slice(-1)[0]
 	const isActive = segment === tab.value.toLowerCase()
 	const activeStyle = isActive ? "text-primary-500" : "text-gray-600"
@@ -49,7 +49,7 @@ function NavButton({ className, ...tab }: Tab & { className?: string }) {
 			<Button
 				key={tab.value}
 				onClick={tab.onClick}
-				className={cn(activeStyle, "w-full md:w-auto", className)}
+				class名称={cn(activeStyle, "w-full md:w-auto", class名称)}
 				aria-label={tab.name}
 				aria-current={isActive ? "page" : undefined}
 				data-tab={tab.value}
@@ -64,10 +64,10 @@ function NavButton({ className, ...tab }: Tab & { className?: string }) {
 				key={tab.value}
 				href={tab.href}
 				data-tab={tab.value}
-				className="w-full"
+				class名称="w-full"
 			>
 				<Button
-					className={cn(activeStyle, "w-full md:w-auto", className)}
+					class名称={cn(activeStyle, "w-full md:w-auto", class名称)}
 					aria-label={tab.name}
 					variant={"ghost"}
 				>
@@ -134,7 +134,7 @@ export function HeaderButtons(): JSX.Element {
 			/>
 			<NavButton
 				key="new"
-				name="New"
+				name="新建"
 				icon={<PlusCircle />}
 				value="new"
 				href="/new"
@@ -147,8 +147,8 @@ export function HeaderButtons(): JSX.Element {
 				href="/mine"
 			/>
 			<NavButton
-				name="Settings"
-				icon={<Settings />}
+				name="设置"
+				icon={<设置 />}
 				value="settings"
 				href="/settings"
 				key="settings"
@@ -158,10 +158,10 @@ export function HeaderButtons(): JSX.Element {
 				<NavButton
 					name="Admin"
 					key="admin"
-					icon={<Settings />}
+					icon={<设置 />}
 					value="admin"
 					href="/admin"
-					className="transition-opacity duration-500"
+					class名称="transition-opacity duration-500"
 				/>
 			)}
 			{isAuthenticated === true && (
@@ -180,7 +180,7 @@ export function HeaderButtons(): JSX.Element {
 			)}
 			{isAuthenticated === false && (
 				<NavButton
-					name="Sign In"
+					name="登录"
 					key="signin"
 					icon={<User />}
 					value="signin"

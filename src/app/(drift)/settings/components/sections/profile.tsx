@@ -2,7 +2,7 @@
 
 import { Button } from "@components/button"
 import { Input } from "@components/input"
-import Note from "@components/note"
+import 否te from "@components/note"
 import { useToasts } from "@components/toasts"
 import { useSessionSWR } from "@lib/use-session-swr"
 import { useEffect, useState } from "react"
@@ -10,26 +10,26 @@ import styles from "./profile.module.css"
 import useSWR from "swr"
 import { User } from "@prisma/client"
 
-function Profile() {
+function 个人资料() {
 	const { session } = useSessionSWR()
 	const { data: userData } = useSWR<User>(
 		session?.user?.id ? `/api/user/${session?.user?.id}` : null
 	)
-	const [name, setName] = useState<string>(userData?.displayName || "")
-	const [submitting, setSubmitting] = useState<boolean>(false)
+	const [name, set名称] = useState<string>(userData?.display名称 || "")
+	const [submitting, set提交ting] = useState<boolean>(false)
 	const { setToast } = useToasts()
 
 	useEffect(() => {
-		if (!name && userData?.displayName) {
-			setName(userData?.displayName)
+		if (!name && userData?.display名称) {
+			set名称(userData?.display名称)
 		}
-	}, [name, userData?.displayName])
+	}, [name, userData?.display名称])
 
-	const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setName(e.target.value)
+	const handle名称Change = (e: React.ChangeEvent<HTMLInputElement>) => {
+		set名称(e.target.value)
 	}
 
-	const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+	const on提交 = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 		if (!name) {
 			setToast({
@@ -38,10 +38,10 @@ function Profile() {
 			})
 			return
 		}
-		setSubmitting(true)
+		set提交ting(true)
 
 		const data = {
-			displayName: name
+			display名称: name
 		}
 
 		const res = await fetch(`/api/user/${session?.user?.id}`, {
@@ -52,11 +52,11 @@ function Profile() {
 			body: JSON.stringify(data)
 		})
 
-		setSubmitting(false)
+		set提交ting(false)
 
 		if (res.status === 200) {
 			setToast({
-				message: "Profile updated",
+				message: "个人资料 updated",
 				type: "success"
 			})
 		} else {
@@ -69,7 +69,7 @@ function Profile() {
 
 	/* if we have their email, they signed in with OAuth */
 	// const imageViaOauth = Boolean(session?.user.email)
-	// const TooltipComponent = ({ children }: { children: React.ReactNode }) =>
+	// const TooltipComponent = ({ children }: { children: React.React否de }) =>
 	// 	imageViaOauth ? (
 	// 		<Tooltip content="Change your profile image on your OAuth provider">
 	// 			{children}
@@ -79,25 +79,25 @@ function Profile() {
 	// 	)
 	return (
 		<>
-			<Note type="warning">
+			<否te type="warning">
 				Your display name is publicly available on your profile.
-			</Note>
-			<form onSubmit={onSubmit} className={styles.form}>
+			</否te>
+			<form on提交={on提交} class名称={styles.form}>
 				<div>
-					<label htmlFor="displayName">Display name</label>
+					<label htmlFor="display名称">Display name</label>
 					<Input
-						id="displayName"
+						id="display名称"
 						width={"100%"}
 						placeholder="my name"
 						value={name || ""}
-						onChange={handleNameChange}
+						onChange={handle名称Change}
 						aria-label="Display name"
 						minLength={1}
 						maxLength={32}
 					/>
 				</div>
 				<div>
-					<label htmlFor="email">Email</label>
+					<label htmlFor="email">邮箱</label>
 					<Input
 						id="email"
 						type="email"
@@ -105,7 +105,7 @@ function Profile() {
 						placeholder="my@email.io"
 						value={session?.user.email || ""}
 						disabled
-						aria-label="Email"
+						aria-label="邮箱"
 					/>
 				</div>
 				{/* <div>
@@ -124,17 +124,17 @@ function Profile() {
                     <UserIcon />
                 )}
                 <TooltipComponent>
-                    <div className={styles.upload}>
+                    <div class名称={styles.upload}>
                         <input
                             type="file"
                             disabled={imageViaOauth}
-                            className={styles.uploadInput}
+                            class名称={styles.uploadInput}
                         />
                         <Button
                             type="button"
                             disabled={imageViaOauth}
                             width="100%"
-                            className={styles.uploadButton}
+                            class名称={styles.uploadButton}
                             aria-hidden="true"
                         >
                             Upload
@@ -143,11 +143,11 @@ function Profile() {
                 </TooltipComponent>
             </div> */}
 				<Button type="submit" disabled={!name} loading={submitting}>
-					Submit
+					提交
 				</Button>
 			</form>
 		</>
 	)
 }
 
-export default Profile
+export default 个人资料

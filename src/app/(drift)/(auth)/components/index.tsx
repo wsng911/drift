@@ -11,38 +11,38 @@ import { Key, User } from "react-feather"
 import GitHub from "react-feather/dist/icons/github"
 import { useToasts } from "@components/toasts"
 import { useRouter } from "next/navigation"
-import Note from "@components/note"
+import 否te from "@components/note"
 import { ErrorQueryParamsHandler } from "./query-handler"
 import { AuthProviders } from "@lib/server/auth-props"
 
 function Auth({
 	page,
 	credentialAuth,
-	requiresServerPassword,
+	requiresServer密码,
 	authProviders
 }: {
 	page: "signup" | "signin"
 	credentialAuth?: boolean
-	requiresServerPassword?: boolean
+	requiresServer密码?: boolean
 	authProviders?: AuthProviders
 }) {
-	const [serverPassword, setServerPassword] = useState("")
+	const [server密码, setServer密码] = useState("")
 	const { setToast } = useToasts()
 	const signingIn = page === "signin"
 	const router = useRouter()
 	const signText = signingIn ? "In" : "Up"
-	const [username, setUsername] = useState("")
-	const [password, setPassword] = useState("")
-	const [submitting, setSubmitting] = useState(false)
+	const [username, set用户名] = useState("")
+	const [password, set密码] = useState("")
+	const [submitting, set提交ting] = useState(false)
 
-	async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+	async function handle提交(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault()
-		setSubmitting(true)
+		set提交ting(true)
 
 		const res = await signIn("credentials", {
 			username,
 			password,
-			registration_password: serverPassword,
+			registration_password: server密码,
 			redirect: false,
 			// callbackUrl: "/signin",
 			signingIn: signingIn
@@ -52,49 +52,49 @@ function Auth({
 				type: "error",
 				message: res.error
 			})
-			setSubmitting(false)
+			set提交ting(false)
 		} else {
 			router.refresh()
 		}
 	}
 
-	function handleChangeUsername(event: React.ChangeEvent<HTMLInputElement>) {
-		setUsername(event.target.value)
+	function handleChange用户名(event: React.ChangeEvent<HTMLInputElement>) {
+		set用户名(event.target.value)
 	}
 
-	function handleChangePassword(event: React.ChangeEvent<HTMLInputElement>) {
-		setPassword(event.target.value)
+	function handleChange密码(event: React.ChangeEvent<HTMLInputElement>) {
+		set密码(event.target.value)
 	}
 
-	function handleChangeServerPassword(
+	function handleChangeServer密码(
 		event: React.ChangeEvent<HTMLInputElement>
 	) {
-		setServerPassword(event.target.value)
+		setServer密码(event.target.value)
 	}
 
 	return (
-		<div className={styles.container}>
+		<div class名称={styles.container}>
 			<ErrorQueryParamsHandler />
-			<div className={"mx-auto w-[300px]"}>
-				<div className={styles.formContentSpace}>
-					<h1 className="text-3xl font-bold">Sign {signText}</h1>
+			<div class名称={"mx-auto w-[300px]"}>
+				<div class名称={styles.formContentSpace}>
+					<h1 class名称="text-3xl font-bold">Sign {signText}</h1>
 				</div>
-				<form onSubmit={handleSubmit}>
-					<div className={styles.formGroup}>
-						{requiresServerPassword ? (
+				<form on提交={handle提交}>
+					<div class名称={styles.formGroup}>
+						{requiresServer密码 ? (
 							<>
 								{" "}
-								<Note type="info">
+								<否te type="info">
 									The server administrator has set a password for this server.
-								</Note>
+								</否te>
 								<Input
 									type="password"
 									id="server-password"
-									value={serverPassword}
-									onChange={handleChangeServerPassword}
-									placeholder="Server Password"
+									value={server密码}
+									onChange={handleChangeServer密码}
+									placeholder="Server 密码"
 									required={true}
-									aria-label="Server Password"
+									aria-label="Server 密码"
 								/>
 								<hr style={{ width: "100%" }} />
 							</>
@@ -106,23 +106,23 @@ function Auth({
 									type="text"
 									id="username"
 									value={username}
-									onChange={handleChangeUsername}
-									placeholder="Username"
+									onChange={handleChange用户名}
+									placeholder="用户名"
 									required={true}
 									minLength={3}
 									width="100%"
-									aria-label="Username"
+									aria-label="用户名"
 								/>
 								<Input
 									type="password"
 									id="password"
 									value={password}
-									onChange={handleChangePassword}
-									placeholder="Password"
+									onChange={handleChange密码}
+									placeholder="密码"
 									required={true}
 									minLength={6}
 									width="100%"
-									aria-label="Password"
+									aria-label="密码"
 								/>
 								<Button type="submit" loading={submitting}>
 									Sign {signText}
@@ -132,8 +132,8 @@ function Auth({
 
 						{authProviders?.length ? (
 							<>
-								<hr className="w-full" />
-								<p className="mt-2 p-0 text-center">
+								<hr class名称="w-full" />
+								<p class名称="mt-2 p-0 text-center">
 									Or sign {signText.toLowerCase()} with one of the following
 								</p>
 								{authProviders?.map((provider) => {
@@ -145,11 +145,11 @@ function Auth({
 												e.preventDefault()
 												signIn(provider.id, {
 													callbackUrl: "/",
-													registration_password: serverPassword
+													registration_password: server密码
 												})
 												router.refresh()
 											}}
-											className="my-2 flex w-full max-w-[250px] items-center justify-center"
+											class名称="my-2 flex w-full max-w-[250px] items-center justify-center"
 										>
 											{getProviderIcon(provider.id)} Sign{" "}
 											{signText.toLowerCase()} with {provider.public_name}
@@ -159,19 +159,19 @@ function Auth({
 							</>
 						) : null}
 					</div>
-					<div className={styles.formContentSpace}>
+					<div class名称={styles.formContentSpace}>
 						{signingIn ? (
 							<p>
 								Don&apos;t have an account?{" "}
 								<Link colored href="/signup">
-									Sign up
+									注册
 								</Link>
 							</p>
 						) : (
 							<p>
 								Have an account?{" "}
 								<Link colored href="/signin">
-									Sign in
+									登录
 								</Link>
 							</p>
 						)}
@@ -187,10 +187,10 @@ export default Auth
 const getProviderIcon = (provider: string) => {
 	switch (provider) {
 		case "github":
-			return <GitHub className="mr-2 h-5 w-5" />
+			return <GitHub class名称="mr-2 h-5 w-5" />
 		case "keycloak":
-			return <Key className="mr-2 h-5 w-5" />
+			return <Key class名称="mr-2 h-5 w-5" />
 		default:
-			return <User className="mr-2 h-5 w-5" />
+			return <User class名称="mr-2 h-5 w-5" />
 	}
 }

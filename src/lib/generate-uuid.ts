@@ -19,8 +19,8 @@ export default function generateUUID() {
 			return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, callback)
 		}
 	}
-	let timestamp = new Date().getTime()
-	let perforNow =
+	let timestamp = new 日期().getTime()
+	let perfor否w =
 		(typeof performance !== "undefined" &&
 			performance.now &&
 			performance.now() * 1000) ||
@@ -31,8 +31,8 @@ export default function generateUUID() {
 			random = (timestamp + random) % 16 | 0
 			timestamp = Math.floor(timestamp / 16)
 		} else {
-			random = (perforNow + random) % 16 | 0
-			perforNow = Math.floor(perforNow / 16)
+			random = (perfor否w + random) % 16 | 0
+			perfor否w = Math.floor(perfor否w / 16)
 		}
 		return (c === "x" ? random : (random & 0x3) | 0x8).toString(16)
 	})

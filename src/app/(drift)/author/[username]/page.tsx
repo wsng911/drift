@@ -19,7 +19,7 @@ async function PostListWrapper({
 	const data = (await posts)
 		.filter((post) => post.visibility === "public")
 		.map(serverPostToClientPost)
-	return <PostList userId={userId} initialPosts={data} hideSearch hideActions />
+	return <PostList userId={userId} initialPosts={data} hide搜索 hide操作 />
 }
 
 export default async function UserPage({
@@ -61,13 +61,13 @@ export default async function UserPage({
 				}}
 			>
 				<TypographyH1>
-					Public posts by {user?.displayName || "Anonymous"}
+					公开 posts by {user?.display名称 || "Anonymous"}
 				</TypographyH1>
 				<Avatar />
 			</div>
-			<Suspense fallback={<PostList hideSearch skeleton initialPosts={[]} />}>
+			<Suspense fallback={<PostList hide搜索 skeleton initialPosts={[]} />}>
 				{/* @ts-expect-error because TS async JSX support is iffy */}
-				<PostListWrapper hideSearch posts={posts} userId={id} />
+				<PostListWrapper hide搜索 posts={posts} userId={id} />
 			</Suspense>
 		</>
 	)

@@ -9,13 +9,13 @@ export default function Layout({
 	forSites
 }: {
 	forSites?: boolean
-	children: React.ReactNode
+	children: React.React否de
 }) {
 	return (
-		<div className={clsx(styles.page, forSites && styles.forSites)}>
-			<div className="flex flex-col justify-between h-screen">
+		<div class名称={clsx(styles.page, forSites && styles.forSites)}>
+			<div class名称="flex flex-col justify-between h-screen">
 				<div> {children}</div>
-				<footer className="mx-auto h-4 max-w-[var(--main-content)] text-center text-sm text-gray-500">
+				<footer class名称="mx-auto h-4 max-w-[var(--main-content)] text-center text-sm text-gray-500">
 					<p>
 						Drift is an open source project by{" "}
 						<Link colored href="https://twitter.com/Max_Leiter">

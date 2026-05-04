@@ -14,7 +14,7 @@ export default async function SignUpPage() {
 		<PageWrapper>
 			<Auth
 				page="signup"
-				requiresServerPassword={requiresPasscode}
+				requiresServer密码={requiresPasscode}
 				credentialAuth={isCredentialEnabled()}
 				authProviders={getAuthProviders()}
 			/>
@@ -23,5 +23,5 @@ export default async function SignUpPage() {
 }
 
 export const metadata = getMetadata({
-	title: "Sign up"
+	title: "注册"
 })

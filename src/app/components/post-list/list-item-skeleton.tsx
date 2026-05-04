@@ -8,12 +8,12 @@ export const ListItemSkeleton = () => (
 			{/* TODO: this is a bad way to do skeletons and is only accurate on desktop */}
 			<CardHeader>
 				<div style={{ display: "flex", gap: 16, marginBottom: 14 }}>
-					<div className={styles.title}>
+					<div class名称={styles.title}>
 						{/* title */}
 						<Skeleton width={80} height={32} />
 					</div>
 
-					<div className={styles.badges}>
+					<div class名称={styles.badges}>
 						<Skeleton width={60} height={32} />
 						<Skeleton width={60} height={32} />
 						<Skeleton width={60} height={32} />

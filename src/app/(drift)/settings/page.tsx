@@ -1,27 +1,27 @@
 import { getMetadata } from "src/app/lib/metadata"
-import SettingsGroup from "../../components/settings-group"
+import 设置Group from "../../components/settings-group"
 import APIKeys from "./components/sections/api-keys"
-import Profile from "./components/sections/profile"
-import { PageTitle } from "@components/page-title"
+import 个人资料 from "./components/sections/profile"
+import { Page标题 } from "@components/page-title"
 import { PageWrapper } from "@components/page-wrapper"
 
-export default async function SettingsPage() {
+export default async function 设置Page() {
 	return (
 		<>
-			<PageTitle>Settings</PageTitle>
+			<Page标题>设置</Page标题>
 			<PageWrapper>
-				<SettingsGroup title="Profile">
-					<Profile />
-				</SettingsGroup>
-				<SettingsGroup title="API Keys">
+				<设置Group title="个人资料">
+					<个人资料 />
+				</设置Group>
+				<设置Group title="API Keys">
 					<APIKeys />
-				</SettingsGroup>
+				</设置Group>
 			</PageWrapper>
 		</>
 	)
 }
 
 export const metadata = getMetadata({
-	title: "Settings",
+	title: "设置",
 	hidden: true
 })

@@ -18,9 +18,9 @@ async function handlePost(req: NextApiRequest, res: NextApiResponse<unknown>) {
 			content: string
 			html: string
 		})[]
-		const fileTitles = files.map((file) => file.title)
-		const missingTitles = fileTitles.filter((title) => title === "")
-		if (missingTitles.length > 0) {
+		const file标题s = files.map((file) => file.title)
+		const missing标题s = file标题s.filter((title) => title === "")
+		if (missing标题s.length > 0) {
 			throw new Error("All files must have a title")
 		}
 
@@ -28,9 +28,9 @@ async function handlePost(req: NextApiRequest, res: NextApiResponse<unknown>) {
 			throw new Error("You must submit at lea	st one file")
 		}
 
-		let hashedPassword = ""
+		let hashed密码 = ""
 		if (req.body.visibility === "protected") {
-			hashedPassword = crypto
+			hashed密码 = crypto
 				.createHash("sha256")
 				.update(req.body.password)
 				.digest("hex")
@@ -51,7 +51,7 @@ async function handlePost(req: NextApiRequest, res: NextApiResponse<unknown>) {
 					title: req.body.title,
 					description: req.body.description,
 					visibility: req.body.visibility,
-					password: hashedPassword,
+					password: hashed密码,
 					expiresAt: req.body.expiresAt,
 					parentId: req.body.parentId,
 					authorId: userId,

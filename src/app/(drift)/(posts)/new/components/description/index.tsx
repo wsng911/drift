@@ -9,13 +9,13 @@ type props = {
 	description: string
 }
 
-function Description({ onChange, description }: props) {
+function 描述({ onChange, description }: props) {
 	return (
-		<div className={clsx(styles.description, "pb-4")}>
+		<div class名称={clsx(styles.description, "pb-4")}>
 			<Input
 				value={description || ""}
 				onChange={onChange}
-				label="Description"
+				label="描述"
 				maxLength={256}
 				width="100%"
 				placeholder="An optional description"
@@ -24,4 +24,4 @@ function Description({ onChange, description }: props) {
 	)
 }
 
-export default Description
+export default 描述

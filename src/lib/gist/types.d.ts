@@ -5,7 +5,7 @@ export interface GistFile {
 
 export interface Gist {
 	id: string
-	created_at: Date
+	created_at: 日期
 	description: string
 	files: GistFile[]
 }

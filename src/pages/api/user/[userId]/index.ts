@@ -22,27 +22,27 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
 	switch (req.method) {
 		case "PUT": {
-			const { displayName } = req.body
+			const { display名称 } = req.body
 			const updatedUser = await prisma.user.update({
 				where: {
 					id: userId
 				},
 				data: {
-					displayName
+					display名称
 					// bio
 				}
 			})
 
 			return res.json({
 				id: updatedUser.id,
-				name: updatedUser.displayName
+				name: updatedUser.display名称
 				// bio: updatedUser.bio
 			})
 		}
 		case "GET":
 			return res.json({
 				...currUser,
-				displayName: user?.displayName
+				display名称: user?.display名称
 			})
 		case "DELETE":
 			if (currUser?.role !== "admin") {
@@ -57,7 +57,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 }
 
 /**
- * @description Deletes a user and all of their posts, files, and accounts
+ * @description 删除s a user and all of their posts, files, and accounts
  * @warning This function does not perform any authorization checks
  */
 export async function deleteUser(id: string | undefined) {

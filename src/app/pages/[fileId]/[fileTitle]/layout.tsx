@@ -9,11 +9,11 @@ const inter = Inter({ subsets: ["latin"], variable: "--inter-font" })
 export default async function RootLayout({
 	children
 }: {
-	children: React.ReactNode
+	children: React.React否de
 }) {
 	return (
 		// suppressHydrationWarning is required because of next-themes
-		<html lang="en" className={inter.variable} suppressHydrationWarning>
+		<html lang="en" class名称={inter.variable} suppressHydrationWarning>
 			<body>
 				<ThemeProvider>
 					<Layout forSites>{children}</Layout>

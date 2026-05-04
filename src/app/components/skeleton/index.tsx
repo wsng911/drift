@@ -13,7 +13,7 @@ export default function Skeleton({
 }) {
 	return (
 		<div
-			className={cn("animate-pulse bg-gray-300 dark:bg-gray-800")}
+			class名称={cn("animate-pulse bg-gray-300 dark:bg-gray-800")}
 			style={{
 				width,
 				height,

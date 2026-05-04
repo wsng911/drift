@@ -1,6 +1,6 @@
 import { useTheme } from "next-themes"
 import { useRouter } from "next/navigation"
-import { FilePlus, Moon, Search, Settings, Sun } from "react-feather"
+import { FilePlus, Moon, 搜索, 设置, Sun } from "react-feather"
 import { CmdKPage } from ".."
 import Item from "../item"
 import { CommandGroup } from "@components/cmdk/cmdk"
@@ -22,7 +22,7 @@ export default function HomePage({
 					onSelect={() => {
 						setPage("posts")
 					}}
-					icon={<Search />}
+					icon={<搜索 />}
 				>
 					Your Recent Posts
 				</Item>
@@ -34,10 +34,10 @@ export default function HomePage({
 					}}
 					icon={<FilePlus />}
 				>
-					New Post
+					新建 Post
 				</Item>
 			</CommandGroup>
-			<CommandGroup heading="Settings">
+			<CommandGroup heading="设置">
 				<Item
 					shortcut="T"
 					onSelect={() => {
@@ -53,9 +53,9 @@ export default function HomePage({
 						router.push("/settings")
 						setOpen(false)
 					}}
-					icon={<Settings />}
+					icon={<设置 />}
 				>
-					Go to Settings
+					Go to 设置
 				</Item>
 			</CommandGroup>
 		</>

@@ -6,7 +6,7 @@ describe("byteToMB", () => {
 	})
 
 	it("converts 1024 bytes to 0.001 MB", () => {
-		expect(byteToMB(1024)).toBeCloseTo(0.001)
+		expect(byteToMB(1024)).toBe关闭To(0.001)
 	})
 
 	it("converts 1048576 bytes to 1 MB", () => {

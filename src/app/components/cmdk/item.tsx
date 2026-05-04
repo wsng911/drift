@@ -6,10 +6,10 @@ export default function Item({
 	onSelect,
 	icon
 }: {
-	children: React.ReactNode
+	children: React.React否de
 	shortcut?: string
 	onSelect: (value: string) => void
-	icon: React.ReactNode
+	icon: React.React否de
 }): JSX.Element {
 	return (
 		<CommandItem onSelect={onSelect}>

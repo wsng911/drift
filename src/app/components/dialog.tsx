@@ -11,111 +11,111 @@ const Dialog = DialogPrimitive.Root
 const DialogTrigger = DialogPrimitive.Trigger
 
 const DialogPortal = ({
-	className,
+	class名称,
 	children,
 	...props
 }: DialogPrimitive.DialogPortalProps) => (
-	<DialogPrimitive.Portal className={cn(className)} {...props}>
-		<div className="fixed inset-0 z-50 flex items-start justify-center sm:items-center">
+	<DialogPrimitive.Portal class名称={cn(class名称)} {...props}>
+		<div class名称="fixed inset-0 z-50 flex items-start justify-center sm:items-center">
 			{children}
 		</div>
 	</DialogPrimitive.Portal>
 )
-DialogPortal.displayName = DialogPrimitive.Portal.displayName
+DialogPortal.display名称 = DialogPrimitive.Portal.display名称
 
 const DialogOverlay = React.forwardRef<
 	React.ElementRef<typeof DialogPrimitive.Overlay>,
 	React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
->(({ className, ...props }, ref) => (
+>(({ class名称, ...props }, ref) => (
 	<DialogPrimitive.Overlay
 		ref={ref}
-		className={cn(
+		class名称={cn(
 			"fixed inset-0 z-50 bg-background/80 backdrop-blur-sm transition-all duration-100 data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=open]:fade-in",
-			className
+			class名称
 		)}
 		{...props}
 	/>
 ))
-DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
+DialogOverlay.display名称 = DialogPrimitive.Overlay.display名称
 
 const DialogContent = React.forwardRef<
 	React.ElementRef<typeof DialogPrimitive.Content>,
 	React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
->(({ className, children, ...props }, ref) => (
+>(({ class名称, children, ...props }, ref) => (
 	<DialogPortal>
 		<DialogOverlay />
 		<DialogPrimitive.Content
 			ref={ref}
-			className={cn(
+			class名称={cn(
 				"fixed z-50 grid w-full gap-4 rounded-b-lg border bg-background p-6 shadow-lg animate-in data-[state=open]:fade-in-90 data-[state=open]:slide-in-from-bottom-10 sm:max-w-lg sm:rounded-lg sm:zoom-in-90 data-[state=open]:sm:slide-in-from-bottom-0",
-				className
+				class名称
 			)}
 			{...props}
 		>
 			{children}
-			<DialogPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
-				<X className="h-4 w-4" />
-				<span className="sr-only">Close</span>
-			</DialogPrimitive.Close>
+			<DialogPrimitive.关闭 class名称="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+				<X class名称="h-4 w-4" />
+				<span class名称="sr-only">关闭</span>
+			</DialogPrimitive.关闭>
 		</DialogPrimitive.Content>
 	</DialogPortal>
 ))
-DialogContent.displayName = DialogPrimitive.Content.displayName
+DialogContent.display名称 = DialogPrimitive.Content.display名称
 
 const DialogHeader = ({
-	className,
+	class名称,
 	...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
 	<div
-		className={cn(
+		class名称={cn(
 			"flex flex-col space-y-1.5 text-center sm:text-left",
-			className
+			class名称
 		)}
 		{...props}
 	/>
 )
-DialogHeader.displayName = "DialogHeader"
+DialogHeader.display名称 = "DialogHeader"
 
 const DialogFooter = ({
-	className,
+	class名称,
 	...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
 	<div
-		className={cn(
+		class名称={cn(
 			"flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
-			className
+			class名称
 		)}
 		{...props}
 	/>
 )
-DialogFooter.displayName = "DialogFooter"
+DialogFooter.display名称 = "DialogFooter"
 
-const DialogTitle = React.forwardRef<
-	React.ElementRef<typeof DialogPrimitive.Title>,
-	React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title>
->(({ className, ...props }, ref) => (
-	<DialogPrimitive.Title
+const Dialog标题 = React.forwardRef<
+	React.ElementRef<typeof DialogPrimitive.标题>,
+	React.ComponentPropsWithoutRef<typeof DialogPrimitive.标题>
+>(({ class名称, ...props }, ref) => (
+	<DialogPrimitive.标题
 		ref={ref}
-		className={cn(
+		class名称={cn(
 			"text-lg font-semibold leading-none tracking-tight",
-			className
+			class名称
 		)}
 		{...props}
 	/>
 ))
-DialogTitle.displayName = DialogPrimitive.Title.displayName
+Dialog标题.display名称 = DialogPrimitive.标题.display名称
 
-const DialogDescription = React.forwardRef<
-	React.ElementRef<typeof DialogPrimitive.Description>,
-	React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description>
->(({ className, ...props }, ref) => (
-	<DialogPrimitive.Description
+const Dialog描述 = React.forwardRef<
+	React.ElementRef<typeof DialogPrimitive.描述>,
+	React.ComponentPropsWithoutRef<typeof DialogPrimitive.描述>
+>(({ class名称, ...props }, ref) => (
+	<DialogPrimitive.描述
 		ref={ref}
-		className={cn("text-sm text-muted-foreground", className)}
+		class名称={cn("text-sm text-muted-foreground", class名称)}
 		{...props}
 	/>
 ))
-DialogDescription.displayName = DialogPrimitive.Description.displayName
+Dialog描述.display名称 = DialogPrimitive.描述.display名称
 
 export {
 	Dialog,
@@ -123,6 +123,6 @@ export {
 	DialogContent,
 	DialogHeader,
 	DialogFooter,
-	DialogTitle,
-	DialogDescription
+	Dialog标题,
+	Dialog描述
 }

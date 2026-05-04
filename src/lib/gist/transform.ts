@@ -3,7 +3,7 @@ import * as crypto from "crypto"
 import { getHtmlFromFile } from "@lib/server/get-html-from-drift-file"
 import { prisma, ServerPost } from "@lib/server/prisma"
 
-export type AdditionalPostInformation = Pick<
+export type 添加itionalPostInformation = Pick<
 	ServerPost,
 	"visibility" | "password" | "expiresAt"
 > & {
@@ -11,7 +11,7 @@ export type AdditionalPostInformation = Pick<
 }
 
 export async function createPostFromGist(
-	{ userId, visibility, password, expiresAt }: AdditionalPostInformation,
+	{ userId, visibility, password, expiresAt }: 添加itionalPostInformation,
 	gist: Gist
 ): Promise<ServerPost> {
 	const files = Object.values(gist.files)
@@ -28,7 +28,7 @@ export async function createPostFromGist(
 			visibility,
 			password,
 			expiresAt,
-			createdAt: new Date(gist.created_at),
+			createdAt: new 日期(gist.created_at),
 			author: {
 				connect: {
 					id: userId

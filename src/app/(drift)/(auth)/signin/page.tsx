@@ -17,5 +17,5 @@ export default function SignInPage() {
 }
 
 export const metadata = getMetadata({
-	title: "Sign in"
+	title: "登录"
 })

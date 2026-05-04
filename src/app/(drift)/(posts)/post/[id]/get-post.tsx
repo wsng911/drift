@@ -16,7 +16,7 @@ export const getPost = cache(async (id: string) => {
 			parentId: true,
 			author: {
 				select: {
-					displayName: true,
+					display名称: true,
 					image: true
 				}
 			},
@@ -36,7 +36,7 @@ export const getPost = cache(async (id: string) => {
 		return notFound()
 	}
 
-	if (post.expiresAt && new Date(post.expiresAt) < new Date()) {
+	if (post.expiresAt && new 日期(post.expiresAt) < new 日期()) {
 		return redirect("/expired")
 	}
 

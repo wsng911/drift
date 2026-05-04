@@ -1,6 +1,6 @@
 "use client"
 
-import PasswordModal from "@components/password-modal"
+import 密码Modal from "@components/password-modal"
 import { useCallback, useState } from "react"
 import ButtonGroup from "@components/button-group"
 import { Button } from "@components/button"
@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation"
 import { useSessionSWR } from "@lib/use-session-swr"
 import { fetchWithUser } from "src/app/lib/fetch-with-user"
 import FadeIn from "@components/fade-in"
-import { PostWithFiles } from "@lib/server/prisma"
+import { PostWith文件 } from "@lib/server/prisma"
 
 type Props = {
 	authorId: string
@@ -26,8 +26,8 @@ function VisibilityControl({
 	const isAuthor = session?.user && session?.user?.id === authorId
 	const [visibility, setVisibility] = useState<string>(postVisibility)
 
-	const [isSubmitting, setSubmitting] = useState<string | null>()
-	const [passwordModalVisible, setPasswordModalVisible] = useState(false)
+	const [is提交ting, set提交ting] = useState<string | null>()
+	const [passwordModalVisible, set密码ModalVisible] = useState(false)
 	const { setToast } = useToasts()
 	const router = useRouter()
 
@@ -42,7 +42,7 @@ function VisibilityControl({
 			})
 
 			if (res.ok) {
-				const json = (await res.json()) as PostWithFiles
+				const json = (await res.json()) as PostWith文件
 				setVisibility(json.visibility)
 				router.refresh()
 				setToast({
@@ -54,81 +54,81 @@ function VisibilityControl({
 					message: "An error occurred",
 					type: "error"
 				})
-				setPasswordModalVisible(false)
+				set密码ModalVisible(false)
 			}
 		},
 		[postId, router, setToast]
 	)
 
-	const onSubmit = useCallback(
+	const on提交 = useCallback(
 		async (visibility: string, password?: string) => {
 			if (visibility === "protected" && !password) {
-				setPasswordModalVisible(true)
+				set密码ModalVisible(true)
 				return
 			}
-			setPasswordModalVisible(false)
-			const timeout = setTimeout(() => setSubmitting(visibility), 100)
+			set密码ModalVisible(false)
+			const timeout = setTimeout(() => set提交ting(visibility), 100)
 
 			await sendRequest(visibility, password)
 			clearTimeout(timeout)
-			setSubmitting(null)
+			set提交ting(null)
 		},
 		[sendRequest]
 	)
 
-	const onClosePasswordModal = () => {
-		setPasswordModalVisible(false)
-		setSubmitting(null)
+	const on关闭密码Modal = () => {
+		set密码ModalVisible(false)
+		set提交ting(null)
 	}
 
-	const submitPassword = (password: string) => onSubmit("protected", password)
+	const submit密码 = (password: string) => on提交("protected", password)
 
 	if (!isAuthor) {
 		return null
 	}
 
 	return (
-		<FadeIn className="mt-8">
+		<FadeIn class名称="mt-8">
 			<ButtonGroup>
 				<Button
 					disabled={visibility === "private"}
 					variant={"outline"}
-					onClick={() => onSubmit("private")}
-					loading={isSubmitting === "private"}
+					onClick={() => on提交("private")}
+					loading={is提交ting === "private"}
 				>
-					Make Private
+					Make 私有
 				</Button>
 				<Button
 					disabled={visibility === "public"}
 					variant={"outline"}
-					onClick={() => onSubmit("public")}
-					loading={isSubmitting === "public"}
+					onClick={() => on提交("public")}
+					loading={is提交ting === "public"}
 				>
-					Make Public
+					Make 公开
 				</Button>
 				<Button
 					disabled={visibility === "unlisted"}
 					variant={"outline"}
-					onClick={() => onSubmit("unlisted")}
-					loading={isSubmitting === "unlisted"}
+					onClick={() => on提交("unlisted")}
+					loading={is提交ting === "unlisted"}
 				>
 					Make Unlisted
 				</Button>
 				<Button
-					onClick={() => onSubmit("protected")}
+					onClick={() => on提交("protected")}
 					variant={"outline"}
-					loading={isSubmitting === "protected"}
+					loading={is提交ting === "protected"}
 				>
 					{visibility === "protected"
-						? "Change Password"
-						: "Protect with Password"}
+						? "Change 密码"
+						: "Protect with 密码"}
 				</Button>
 			</ButtonGroup>
-			<PasswordModal
+			<密码Modal
 				creating={true}
 				isOpen={passwordModalVisible}
-				onClose={onClosePasswordModal}
-				onSubmit={submitPassword}
+				on关闭={on关闭密码Modal}
+				on提交={submit密码}
 			/>
 		</FadeIn>
 	)

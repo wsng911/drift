@@ -8,35 +8,35 @@ export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-	({ className, type, label, hideLabel, ...props }, ref) => {
+	({ class名称, type, label, hideLabel, ...props }, ref) => {
 		const id = React.useId()
 		return (
-			<span className="flex w-full flex-row items-center">
+			<span class名称="flex w-full flex-row items-center">
 				{label && !hideLabel ? (
 					<label
 						htmlFor={id}
-						className={cn(
+						class名称={cn(
 							"h-10 rounded-md border border-input bg-transparent px-3 py-2 text-sm font-medium text-muted-foreground",
 							"rounded-br-none rounded-tr-none",
-							className
+							class名称
 						)}
 					>
 						{label}
 					</label>
 				) : null}
 				{label && hideLabel ? (
-					<label htmlFor={id} className="sr-only">
+					<label htmlFor={id} class名称="sr-only">
 						{label}
 					</label>
 				) : null}
 				<input
 					type={type}
-					className={cn(
+					class名称={cn(
 						"flex h-10 w-full border border-input bg-transparent px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
 						label && !hideLabel
 							? "rounded-bl-none rounded-tl-none border-l-0"
 							: "rounded-md",
-						className
+						class名称
 					)}
 					ref={ref}
 					id={id}
@@ -46,6 +46,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 		)
 	}
 )
-Input.displayName = "Input"
+Input.display名称 = "Input"
 
 export { Input }

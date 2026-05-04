@@ -9,7 +9,7 @@ export function isAllowedVisibilityForWebpage(
 }
 export const DEFAULT_THEME = "dark"
 
-export const SIGNED_IN_COOKIE = "next-auth.session-token"
+export const SIGNED_IN_CO确定IE = "next-auth.session-token"
 
 // Code files for uploading with drag and drop and syntax highlighting
 export const allowedFileTypes = [
@@ -43,7 +43,7 @@ export const allowedFileTypes = [
 	"text/markdown"
 ]
 
-export const allowedFileNames = [
+export const allowedFile名称s = [
 	"Makefile",
 	"README",
 	"Dockerfile",

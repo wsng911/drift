@@ -14,7 +14,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@components/tabs"
 import { Textarea } from "@components/textarea"
 
 type Props = ComponentProps<typeof Tabs> & {
-	isEditing: boolean
+	is编辑ing: boolean
 	defaultTab: "preview" | "edit"
 	handleOnContentChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void
 	onPaste?: (e: ClipboardEvent<HTMLTextAreaElement>) => void
@@ -24,7 +24,7 @@ type Props = ComponentProps<typeof Tabs> & {
 }
 
 export default function DocumentTabs({
-	isEditing,
+	is编辑ing,
 	defaultTab,
 	handleOnContentChange,
 	onPaste,
@@ -33,28 +33,28 @@ export default function DocumentTabs({
 	children: rawContent,
 	...props
 }: Props) {
-	const codeEditorRef = useRef<TextareaMarkdownRef>(null)
+	const code编辑orRef = useRef<TextareaMarkdownRef>(null)
 	const [activeTab, setActiveTab] = useState<"preview" | "edit">(defaultTab)
 	const handleTabChange = (newTab: string) => {
 		if (newTab === "preview") {
-			codeEditorRef.current?.focus()
+			code编辑orRef.current?.focus()
 		}
 		setActiveTab(newTab as "preview" | "edit")
 	}
 
 	return (
 		<Tabs {...props} onValueChange={handleTabChange} defaultValue={defaultTab}>
-			<TabsList className="flex flex-col items-start justify-start sm:flex-row sm:items-center sm:justify-between">
+			<TabsList class名称="flex flex-col items-start justify-start sm:flex-row sm:items-center sm:justify-between">
 				<div>
-					<TabsTrigger value="edit">{isEditing ? "Edit" : "Raw"}</TabsTrigger>
+					<TabsTrigger value="edit">{is编辑ing ? "编辑" : "Raw"}</TabsTrigger>
 					<TabsTrigger value="preview">
-						{isEditing ? "Preview" : "Rendered"}
+						{is编辑ing ? "Preview" : "Rendered"}
 					</TabsTrigger>
 				</div>
-				{isEditing && (
+				{is编辑ing && (
 					<FormattingIcons
-						textareaRef={codeEditorRef}
-						className={`ml-auto ${
+						textareaRef={code编辑orRef}
+						class名称={`ml-auto ${
 							activeTab === "preview" ? "hidden" : "hidden sm:block"
 						}`}
 					/>
@@ -69,30 +69,30 @@ export default function DocumentTabs({
 					}}
 				>
 					<FormattingIcons
-						textareaRef={codeEditorRef}
-						className={`ml-auto ${
+						textareaRef={code编辑orRef}
+						class名称={`ml-auto ${
 							activeTab === "preview"
 								? "hidden"
 								: "block text-muted-foreground sm:hidden"
 						}`}
 					/>
-					<TextareaMarkdown.Wrapper ref={codeEditorRef}>
+					<TextareaMarkdown.Wrapper ref={code编辑orRef}>
 						<Textarea
-							readOnly={!isEditing}
+							readOnly={!is编辑ing}
 							onPaste={onPaste ? onPaste : undefined}
-							ref={codeEditorRef}
+							ref={code编辑orRef}
 							placeholder=""
 							value={rawContent}
 							onChange={handleOnContentChange}
 							// TODO: Textarea should grow to fill parent if height == 100%
 							style={{ flex: 1, minHeight: 350 }}
-							// className={styles.textarea}
+							// class名称={styles.textarea}
 						/>
 					</TextareaMarkdown.Wrapper>
 				</div>
 			</TabsContent>
 			<TabsContent value="preview">
-				{isEditing ? (
+				{is编辑ing ? (
 					<Preview height={"100%"} title={title}>
 						{rawContent}
 					</Preview>

@@ -3,7 +3,7 @@ import styles from "./drag-and-drop.module.css"
 import generateUUID from "@lib/generate-uuid"
 import {
 	allowedFileTypes,
-	allowedFileNames,
+	allowedFile名称s,
 	allowedFileExtensions
 } from "@lib/constants"
 import byteToMB from "@lib/byte-to-mb"
@@ -12,9 +12,9 @@ import { useToasts } from "@components/toasts"
 
 function FileDropzone({ setDocs }: { setDocs: (docs: Document[]) => void }) {
 	const { setToast } = useToasts()
-	const onDrop = async (acceptedFiles: File[]) => {
+	const onDrop = async (accepted文件: File[]) => {
 		const newDocs = await Promise.all(
-			acceptedFiles.map((file) => {
+			accepted文件.map((file) => {
 				return new Promise<Document>((resolve) => {
 					const reader = new FileReader()
 
@@ -54,7 +54,7 @@ function FileDropzone({ setDocs }: { setDocs: (docs: Document[]) => void }) {
 		// We initially try to use the browser provided mime type, and then fall back to file names and finally extensions
 		if (
 			allowedFileTypes.includes(file.type) ||
-			allowedFileNames.includes(file.name) ||
+			allowedFile名称s.includes(file.name) ||
 			allowedFileExtensions.includes(file.name?.split(".").pop() || "")
 		) {
 			return null
@@ -81,18 +81,18 @@ function FileDropzone({ setDocs }: { setDocs: (docs: Document[]) => void }) {
 	))
 
 	return (
-		<div className={styles.container}>
+		<div class名称={styles.container}>
 			<div {...getRootProps()}>
 				<input {...getInputProps()} />
 				{!isDragActive && (
-					<p className="cursor-pointer select-none rounded-md border-2 border-dashed p-4 text-sm text-muted-foreground">
+					<p class名称="cursor-pointer select-none rounded-md border-2 border-dashed p-4 text-sm text-muted-foreground">
 						Drag and drop files here, or click to select
 					</p>
 				)}
 				{isDragActive && <p>Release to drop the files here</p>}
 			</div>
 			{fileRejections.length > 0 && (
-				<ul className={styles.error}>
+				<ul class名称={styles.error}>
 					{/* <Button style={{ float: 'right' }} type="abort" onClick={() => fileRejections.splice(0, fileRejections.length)} auto iconRight={<XCircle />}></Button> */}
 					<p>There was a problem with one or more of your files.</p>
 					{fileRejectionItems}

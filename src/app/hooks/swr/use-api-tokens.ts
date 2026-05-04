@@ -2,18 +2,18 @@ import { ApiToken } from "@prisma/client"
 import { ApiResponse } from "src/app/(drift)/providers"
 import useSWR from "swr"
 
-type ConvertDateToString<T> = {
-	[P in keyof T]: T[P] extends Date ? string : T[P]
+type Convert日期ToString<T> = {
+	[P in keyof T]: T[P] extends 日期 ? string : T[P]
 }
 
-export type SerializedApiToken = ConvertDateToString<ApiToken>
+export type SerializedApiToken = Convert日期ToString<ApiToken>
 
 type UseApiTokens = {
 	userId?: string
 	initialTokens?: SerializedApiToken[]
 }
 
-const TOKENS_ENDPOINT = "/api/user/tokens"
+const T确定ENS_ENDPOINT = "/api/user/tokens"
 
 export function useApiTokens({ userId, initialTokens }: UseApiTokens) {
 	const { data, mutate, error, isLoading } = useSWR<SerializedApiToken[]>(
@@ -30,7 +30,7 @@ export function useApiTokens({ userId, initialTokens }: UseApiTokens) {
 		}
 
 		const res = await fetch(
-			`${TOKENS_ENDPOINT}?userId=${userId}&name=${newToken}`,
+			`${T确定ENS_ENDPOINT}?userId=${userId}&name=${newToken}`,
 			{
 				method: "POST"
 			}
@@ -48,7 +48,7 @@ export function useApiTokens({ userId, initialTokens }: UseApiTokens) {
 	}
 
 	const expireToken = async (id: string) => {
-		await fetch(`${TOKENS_ENDPOINT}?userId=${userId}&tokenId=${id}`, {
+		await fetch(`${T确定ENS_ENDPOINT}?userId=${userId}&tokenId=${id}`, {
 			method: "DELETE"
 		})
 		mutate(data?.filter((token) => token.id !== id))

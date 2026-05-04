@@ -15,12 +15,12 @@ import {
 const credentialsOptions = () => {
 	const options: Record<string, unknown> = {
 		username: {
-			label: "Username",
+			label: "用户名",
 			required: true,
 			type: "text"
 		},
 		password: {
-			label: "Password",
+			label: "密码",
 			required: true,
 			type: "password"
 		}
@@ -28,7 +28,7 @@ const credentialsOptions = () => {
 
 	if (config.registration_password) {
 		options["registration_password"] = {
-			label: "Server Password",
+			label: "Server 密码",
 			type: "password",
 			optional: true
 		}
@@ -71,14 +71,14 @@ const providers = () => {
 				}
 			}
 		})
-		const originalKeycloakProfile = keycloak.profile
+		const originalKeycloak个人资料 = keycloak.profile
 		keycloak.profile = async (profile, tokens) => {
-			const originalProfile = await originalKeycloakProfile(profile, tokens)
-			const newProfile: User & { displayName?: string | null } = {
-				...originalProfile,
-				displayName: originalProfile.name ?? null
+			const original个人资料 = await originalKeycloak个人资料(profile, tokens)
+			const new个人资料: User & { display名称?: string | null } = {
+				...original个人资料,
+				display名称: original个人资料.name ?? null
 			}
-			return newProfile
+			return new个人资料
 		}
 
 		providers.push(keycloak)
@@ -96,11 +96,11 @@ const providers = () => {
 					}
 
 					if (credentials.username.length < 3) {
-						throw new Error("Username must be at least 3 characters")
+						throw new Error("用户名 must be at least 3 characters")
 					}
 
 					if (credentials.password.length < 3) {
-						throw new Error("Password must be at least 3 characters")
+						throw new Error("密码 must be at least 3 characters")
 					}
 
 					const user = await prisma.user.findUnique({
@@ -110,13 +110,13 @@ const providers = () => {
 						select: {
 							id: true,
 							username: true,
-							displayName: true,
+							display名称: true,
 							role: true,
 							password: true
 						}
 					})
 
-					const hashedPassword = crypto
+					const hashed密码 = crypto
 						.createHash("sha256")
 						.update(credentials.password + config.nextauth_secret)
 						.digest("hex")
@@ -126,7 +126,7 @@ const providers = () => {
 							user?.password &&
 							crypto.timingSafeEqual(
 								Buffer.from(user.password),
-								Buffer.from(hashedPassword)
+								Buffer.from(hashed密码)
 							)
 						) {
 							return user
@@ -148,15 +148,15 @@ const providers = () => {
 						}
 
 						if (user) {
-							throw new Error("Username already taken")
+							throw new Error("用户名 already taken")
 						}
 
 						const newUser = await prisma.user.create({
 							data: {
 								username: credentials.username,
-								displayName: credentials.username,
+								display名称: credentials.username,
 								role: "user",
-								password: hashedPassword,
+								password: hashed密码,
 								name: credentials.username
 							}
 						})
@@ -242,7 +242,7 @@ export const authOptions: NextAuthOptions = {
 
 			return {
 				id: dbUser.id,
-				name: dbUser.displayName,
+				name: dbUser.display名称,
 				email: dbUser.email,
 				picture: dbUser.image,
 				role: dbUser.role || "user",
@@ -271,22 +271,22 @@ export const authOptions: NextAuthOptions = {
 					}
 				})
 
-				let ssoLogoutUrl = null
+				let sso退出登录Url = null
 				let idToken = null
 				let clientId = null
 
-				// OpenID Connect Logout
+				// OpenID Connect 退出登录
 				if (account?.provider === "keycloak") {
-					ssoLogoutUrl = `${config.keycloak_issuer}/protocol/openid-connect/logout`
+					sso退出登录Url = `${config.keycloak_issuer}/protocol/openid-connect/logout`
 					idToken = account.id_token
 					clientId = config.keycloak_client_id
 				}
 
-				if (!ssoLogoutUrl) {
+				if (!sso退出登录Url) {
 					return baseUrl
 				}
 
-				let signoutWithRedirectUrl = `${ssoLogoutUrl}?post_logout_redirect_uri=${encodeURIComponent(
+				let signoutWithRedirectUrl = `${sso退出登录Url}?post_logout_redirect_uri=${encodeURIComponent(
 					baseUrl
 				)}`
 

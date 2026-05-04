@@ -8,10 +8,10 @@ import { NextApiRequest, NextApiResponse } from "next"
 
 export async function getWelcomeContent() {
 	const introContent = config.welcome_content
-	const introTitle = config.welcome_title
+	const intro标题 = config.welcome_title
 
 	return {
-		title: introTitle,
+		title: intro标题,
 		content: introContent,
 		rendered: await getHtmlFromFile({
 			title: `intro.md`,

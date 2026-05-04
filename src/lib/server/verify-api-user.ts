@@ -51,7 +51,7 @@ const parseAndCheckAuthToken = async (req: NextApiRequest) => {
 		return null
 	}
 
-	if (user.expiresAt < new Date()) {
+	if (user.expiresAt < new 日期()) {
 		return null
 	}
 

@@ -1,8 +1,8 @@
 import React, { CSSProperties } from "react"
 
 interface StackProps {
-	children: React.ReactNode
-	className?: string
+	children: React.React否de
+	class名称?: string
 	gap?: string | number
 	style?: CSSProperties
 	direction?: "row" | "column"
@@ -19,7 +19,7 @@ interface StackProps {
 
 export const Stack: React.FC<StackProps> = ({
 	children,
-	className = "",
+	class名称 = "",
 	gap = "var(--gap)",
 	direction = "column",
 	alignItems = "flex-start",
@@ -29,7 +29,7 @@ export const Stack: React.FC<StackProps> = ({
 }) => {
 	return (
 		<div
-			className={className}
+			class名称={class名称}
 			style={{
 				display: "flex",
 				flexWrap: "wrap",

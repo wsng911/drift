@@ -1,6 +1,6 @@
 import { Popover, PopoverContent, PopoverTrigger } from "@components/popover"
 import { codeFileExtensions } from "@lib/constants"
-import type { PostWithFiles } from "src/lib/server/prisma"
+import type { PostWith文件 } from "src/lib/server/prisma"
 import styles from "./dropdown.module.css"
 import { ChevronDown, Code, File as FileIcon } from "react-feather"
 import { Spinner } from "@components/spinner"
@@ -11,14 +11,14 @@ function FileDropdown({
 	files,
 	loading
 }: {
-	files: Pick<PostWithFiles, "files">["files"]
+	files: Pick<PostWith文件, "files">["files"]
 	loading?: boolean
 }) {
 	if (loading) {
 		return (
 			<Popover>
 				<PopoverTrigger
-					className={buttonVariants({
+					class名称={buttonVariants({
 						variant: "link"
 					})}
 				>
@@ -35,23 +35,23 @@ function FileDropdown({
 		if (codeFileExtensions.includes(extension || "")) {
 			return {
 				...file,
-				icon: <Code className="h-4 w-4" />
+				icon: <Code class名称="h-4 w-4" />
 			}
 		} else {
 			return {
 				...file,
-				icon: <FileIcon className="h-4 w-4" />
+				icon: <FileIcon class名称="h-4 w-4" />
 			}
 		}
 	})
 
 	const content = (
-		<ul className="text-sm">
+		<ul class名称="text-sm">
 			{items.map((item) => (
-				<li key={item.id} className="flex">
+				<li key={item.id} class名称="flex">
 					<Link
 						href={`#${item.title}`}
-						className="flex w-full items-center gap-3 hover:underline"
+						class名称="flex w-full items-center gap-3 hover:underline"
 					>
 						{item.icon}
 						{item.title ? item.title : "Untitled"}
@@ -64,11 +64,11 @@ function FileDropdown({
 	return (
 		<Popover>
 			<PopoverTrigger
-				className={buttonVariants({
+				class名称={buttonVariants({
 					variant: "secondary"
 				})}
 			>
-				<div className={styles.chevron} style={{ marginRight: 6 }}>
+				<div class名称={styles.chevron} style={{ marginRight: 6 }}>
 					<ChevronDown />
 				</div>
 				<span>

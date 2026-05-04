@@ -29,10 +29,10 @@ const ScrollToTop = () => {
 	}
 
 	return (
-		<div className={styles.root}>
+		<div class名称={styles.root}>
 			<Tooltip
 				content="Scroll to Top"
-				className={`${styles["scroll-up"]} ${
+				class名称={`${styles["scroll-up"]} ${
 					shouldShow ? styles["scroll-up-shown"] : ""
 				}`}
 			>

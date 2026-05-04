@@ -1,21 +1,21 @@
 import clsx from "clsx"
 import styles from "./note.module.css"
 
-const Note = ({
+const 否te = ({
 	type = "info",
 	children,
-	className,
+	class名称,
 	...props
 }: {
 	type: "info" | "warning" | "error"
-	children: React.ReactNode
+	children: React.React否de
 } & React.ComponentProps<"div">) => (
 	<div
-		className={clsx(className, styles.note, styles[type], "text-sm")}
+		class名称={clsx(class名称, styles.note, styles[type], "text-sm")}
 		{...props}
 	>
 		{children}
 	</div>
 )
 
-export default Note
+export default 否te

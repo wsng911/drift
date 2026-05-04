@@ -1,5 +1,5 @@
 import { Button } from "@components/button"
-import React, { ComponentProps, ReactNode } from "react"
+import React, { ComponentProps, React否de } from "react"
 import styles from "./dropdown.module.css"
 import {
 	DropdownMenu,
@@ -17,7 +17,7 @@ const ButtonDropdown: React.FC<React.PropsWithChildren<ButtonDropdownProps>> = (
 ) => {
 	return (
 		<DropdownMenu>
-			<div className={styles.dropdown}>
+			<div class名称={styles.dropdown}>
 				<>
 					{Array.isArray(props.children) ? props.children[0] : props.children}
 					<DropdownMenuTrigger asChild>
@@ -28,7 +28,7 @@ const ButtonDropdown: React.FC<React.PropsWithChildren<ButtonDropdownProps>> = (
 					{Array.isArray(props.children) ? (
 						<DropdownMenuPortal>
 							<DropdownMenuContent align="end">
-								{(props.children as ReactNode[])
+								{(props.children as React否de[])
 									?.slice(1)
 									.map((child, index) => (
 										<DropdownMenuItem key={index}>{child}</DropdownMenuItem>

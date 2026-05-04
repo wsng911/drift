@@ -1,5 +1,5 @@
 import { Spinner } from "@components/spinner"
-import { PostWithFiles } from "@lib/server/prisma"
+import { PostWith文件 } from "@lib/server/prisma"
 import { useSessionSWR } from "@lib/use-session-swr"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
@@ -13,7 +13,7 @@ export default function PostsPage({
 	setOpen: (open: boolean) => void
 }) {
 	const { session } = useSessionSWR()
-	const [posts, setPosts] = useState<PostWithFiles[]>()
+	const [posts, setPosts] = useState<PostWith文件[]>()
 	const [isLoading, setLoading] = useState(true)
 
 	useEffect(() => {
@@ -23,7 +23,7 @@ export default function PostsPage({
 				method: "GET"
 			})
 
-			const posts = (await data.json()) as PostWithFiles[]
+			const posts = (await data.json()) as PostWith文件[]
 			setPosts(posts)
 			setLoading(false)
 		}

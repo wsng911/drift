@@ -14,7 +14,7 @@ export default function CmdK() {
 
 	// Toggle the menu when ⌘K is pressed
 	useEffect(() => {
-		const openCloseListener = (e: KeyboardEvent) => {
+		const open关闭Listener = (e: KeyboardEvent) => {
 			if (e.key === "k" && e.metaKey) {
 				e.preventDefault()
 				setOpen((open) => !open)
@@ -30,9 +30,9 @@ export default function CmdK() {
 			}
 		}
 
-		document.addEventListener("keydown", openCloseListener)
+		document.addEventListener("keydown", open关闭Listener)
 		return () => {
-			document.removeEventListener("keydown", openCloseListener)
+			document.removeEventListener("keydown", open关闭Listener)
 		}
 	}, [page])
 
@@ -54,7 +54,7 @@ export default function CmdK() {
 	return (
 		<CommandDialog open={open} onOpenChange={setOpen}>
 			<CommandList>
-				<CommandEmpty>No results found.</CommandEmpty>
+				<CommandEmpty>否 results found.</CommandEmpty>
 				{page === "home" ? (
 					<HomePage setPage={setPage} setOpen={setOpen} />
 				) : null}

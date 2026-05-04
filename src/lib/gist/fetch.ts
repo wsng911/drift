@@ -49,7 +49,7 @@ export function responseToGist(response: GistResponse): Gist {
 
 	return {
 		id: response.id,
-		created_at: new Date(response.created_at),
+		created_at: new 日期(response.created_at),
 		description: response.description || Object.keys(response.files)[0],
 		files: Object.values(response.files).map(toFile)
 	}
